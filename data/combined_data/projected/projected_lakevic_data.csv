@@ -1,0 +1,481 @@
+year,month,region,rainfall,runoff
+2026,April,Kagera,5.478,1381.322
+2026,April,Lake Victoria,11.46,708.806
+2026,April,Simiyu,4.534,708.806
+2026,April,Victoria Nile,,3611.252
+2026,Aug.,Kagera,0.298,85.005
+2026,Aug.,Lake Victoria,2.471,11.044
+2026,Aug.,Simiyu,0.071,11.044
+2026,Aug.,Victoria Nile,,801.495
+2026,Dec.,Kagera,1.799,201.333
+2026,Dec.,Lake Victoria,4.863,12.654
+2026,Dec.,Simiyu,6.688,12.654
+2026,Dec.,Victoria Nile,,554.523
+2026,Feb.,Kagera,0.159,10.69
+2026,Feb.,Lake Victoria,0.304,6.48
+2026,Feb.,Simiyu,0.126,6.48
+2026,Feb.,Victoria Nile,,501.831
+2026,Jan.,Kagera,10.385,1504.135
+2026,Jan.,Lake Victoria,18.836,1439.778
+2026,Jan.,Simiyu,10.689,1439.778
+2026,Jan.,Victoria Nile,,5564.265
+2026,July,Kagera,0.297,108.893
+2026,July,Lake Victoria,3.105,14.153
+2026,July,Simiyu,0.196,14.153
+2026,July,Victoria Nile,,676.113
+2026,June,Kagera,0.281,138.483
+2026,June,Lake Victoria,1.104,18.324
+2026,June,Simiyu,0.422,18.324
+2026,June,Victoria Nile,,740.173
+2026,March,Kagera,5.936,1478.048
+2026,March,Lake Victoria,15.677,259.237
+2026,March,Simiyu,1.088,259.237
+2026,March,Victoria Nile,,4723.488
+2026,May,Kagera,8.604,3259.169
+2026,May,Lake Victoria,10.14,19.102
+2026,May,Simiyu,1.884,19.102
+2026,May,Victoria Nile,,3417.707
+2026,Nov.,Kagera,1.999,68.105
+2026,Nov.,Lake Victoria,4.653,5.323
+2026,Nov.,Simiyu,1.568,5.323
+2026,Nov.,Victoria Nile,,529.917
+2026,Oct.,Kagera,0.327,52.848
+2026,Oct.,Lake Victoria,2.541,6.854
+2026,Oct.,Simiyu,0.239,6.854
+2026,Oct.,Victoria Nile,,440.296
+2026,Sept.,Kagera,0.407,71.195
+2026,Sept.,Lake Victoria,3.351,8.647
+2026,Sept.,Simiyu,1.259,8.647
+2026,Sept.,Victoria Nile,,568.611
+2027,April,Kagera,5.534,1189.443
+2027,April,Lake Victoria,7.179,272.714
+2027,April,Simiyu,3.648,272.714
+2027,April,Victoria Nile,,2337.6
+2027,Aug.,Kagera,0.312,40.288
+2027,Aug.,Lake Victoria,3.939,1.001
+2027,Aug.,Simiyu,0.283,1.001
+2027,Aug.,Victoria Nile,,920.991
+2027,Dec.,Kagera,1.721,843.331
+2027,Dec.,Lake Victoria,4.649,1231.059
+2027,Dec.,Simiyu,7.835,1231.059
+2027,Dec.,Victoria Nile,,2445.612
+2027,Feb.,Kagera,6.386,75.715
+2027,Feb.,Lake Victoria,14.479,22.778
+2027,Feb.,Simiyu,7.714,22.778
+2027,Feb.,Victoria Nile,,478.223
+2027,Jan.,Kagera,1.999,90.297
+2027,Jan.,Lake Victoria,2.557,20.4
+2027,Jan.,Simiyu,0.298,20.4
+2027,Jan.,Victoria Nile,,518.681
+2027,July,Kagera,0.272,72.309
+2027,July,Lake Victoria,5.148,7.552
+2027,July,Simiyu,0.132,7.552
+2027,July,Victoria Nile,,1130.019
+2027,June,Kagera,0.116,9.375
+2027,June,Lake Victoria,2.32,1.39
+2027,June,Simiyu,0.409,1.39
+2027,June,Victoria Nile,,590.032
+2027,March,Kagera,0.599,19.345
+2027,March,Lake Victoria,0.376,3.275
+2027,March,Simiyu,0.22,3.275
+2027,March,Victoria Nile,,251.309
+2027,May,Kagera,3.475,359.141
+2027,May,Lake Victoria,9.737,66.019
+2027,May,Simiyu,7.948,66.019
+2027,May,Victoria Nile,,2838.271
+2027,Nov.,Kagera,0.865,120.779
+2027,Nov.,Lake Victoria,3.448,3.925
+2027,Nov.,Simiyu,0.404,3.925
+2027,Nov.,Victoria Nile,,1012.194
+2027,Oct.,Kagera,4.566,272.556
+2027,Oct.,Lake Victoria,7.58,222.214
+2027,Oct.,Simiyu,14.394,222.214
+2027,Oct.,Victoria Nile,,2238.748
+2027,Sept.,Kagera,4.874,49.808
+2027,Sept.,Lake Victoria,7.316,0.474
+2027,Sept.,Simiyu,0.151,0.474
+2027,Sept.,Victoria Nile,,2286.356
+2028,April,Kagera,3.172,504.466
+2028,April,Lake Victoria,9.297,40.763
+2028,April,Simiyu,3.334,40.763
+2028,April,Victoria Nile,,1459.633
+2028,Aug.,Kagera,0.214,15.392
+2028,Aug.,Lake Victoria,7.773,38.021
+2028,Aug.,Simiyu,1.445,38.021
+2028,Aug.,Victoria Nile,,1457.533
+2028,Dec.,Kagera,0.408,118.606
+2028,Dec.,Lake Victoria,0.151,74.394
+2028,Dec.,Simiyu,0.211,74.394
+2028,Dec.,Victoria Nile,,1053.553
+2028,Feb.,Kagera,0.187,64.126
+2028,Feb.,Lake Victoria,0.262,25.81
+2028,Feb.,Simiyu,0.066,25.81
+2028,Feb.,Victoria Nile,,771.498
+2028,Jan.,Kagera,0.512,81.658
+2028,Jan.,Lake Victoria,0.287,31.354
+2028,Jan.,Simiyu,0.344,31.354
+2028,Jan.,Victoria Nile,,988.444
+2028,July,Kagera,0.276,19.973
+2028,July,Lake Victoria,4.004,48.954
+2028,July,Simiyu,0.198,48.954
+2028,July,Victoria Nile,,1267.622
+2028,June,Kagera,0.211,24.544
+2028,June,Lake Victoria,2.064,62.341
+2028,June,Simiyu,0.399,62.341
+2028,June,Victoria Nile,,857.237
+2028,March,Kagera,12.696,1747.594
+2028,March,Lake Victoria,12.635,568.805
+2028,March,Simiyu,7.415,568.805
+2028,March,Victoria Nile,,1406.446
+2028,May,Kagera,3.524,164.755
+2028,May,Lake Victoria,7.775,648.736
+2028,May,Simiyu,7.899,648.736
+2028,May,Victoria Nile,,2566.166
+2028,Nov.,Kagera,9.228,981.354
+2028,Nov.,Lake Victoria,15.691,300.321
+2028,Nov.,Simiyu,5.961,300.321
+2028,Nov.,Victoria Nile,,5601.258
+2028,Oct.,Kagera,0.843,9.382
+2028,Oct.,Lake Victoria,1.924,23.649
+2028,Oct.,Simiyu,0.172,23.649
+2028,Oct.,Victoria Nile,,742.864
+2028,Sept.,Kagera,1.666,86.469
+2028,Sept.,Lake Victoria,3.967,40.085
+2028,Sept.,Simiyu,0.584,40.085
+2028,Sept.,Victoria Nile,,869.242
+2029,April,Kagera,1.031,570.182
+2029,April,Lake Victoria,6.861,798.847
+2029,April,Simiyu,6.09,798.847
+2029,April,Victoria Nile,,3587.961
+2029,Aug.,Kagera,0.337,12.525
+2029,Aug.,Lake Victoria,3.324,24.944
+2029,Aug.,Simiyu,0.079,24.944
+2029,Aug.,Victoria Nile,,1037.908
+2029,Dec.,Kagera,1.137,5.631
+2029,Dec.,Lake Victoria,2.296,27.437
+2029,Dec.,Simiyu,3.47,27.437
+2029,Dec.,Victoria Nile,,580.721
+2029,Feb.,Kagera,4.085,210.067
+2029,Feb.,Lake Victoria,21.804,68.734
+2029,Feb.,Simiyu,6.549,68.734
+2029,Feb.,Victoria Nile,,5101.226
+2029,Jan.,Kagera,2.722,78.997
+2029,Jan.,Lake Victoria,0.789,256.238
+2029,Jan.,Simiyu,4.276,256.238
+2029,Jan.,Victoria Nile,,1155.599
+2029,July,Kagera,0.494,7.242
+2029,July,Lake Victoria,3.257,31.952
+2029,July,Simiyu,0.333,31.952
+2029,July,Victoria Nile,,675.717
+2029,June,Kagera,1.001,9.201
+2029,June,Lake Victoria,1.35,40.622
+2029,June,Simiyu,0.133,40.622
+2029,June,Victoria Nile,,831.6
+2029,March,Kagera,0.359,5.851
+2029,March,Lake Victoria,0.237,8.834
+2029,March,Simiyu,0.251,8.834
+2029,March,Victoria Nile,,581.506
+2029,May,Kagera,5.378,875.607
+2029,May,Lake Victoria,10.446,52.261
+2029,May,Simiyu,0.458,52.261
+2029,May,Victoria Nile,,3742.57
+2029,Nov.,Kagera,2.843,7.424
+2029,Nov.,Lake Victoria,1.461,12.148
+2029,Nov.,Simiyu,1.571,12.148
+2029,Nov.,Victoria Nile,,547.267
+2029,Oct.,Kagera,1.572,22.822
+2029,Oct.,Lake Victoria,3.355,23.941
+2029,Oct.,Simiyu,3.725,23.941
+2029,Oct.,Victoria Nile,,1371.398
+2029,Sept.,Kagera,6.427,18.276
+2029,Sept.,Lake Victoria,5.289,22.076
+2029,Sept.,Simiyu,6.951,22.076
+2029,Sept.,Victoria Nile,,1274.223
+2030,April,Kagera,15.408,2220.192
+2030,April,Lake Victoria,11.987,116.852
+2030,April,Simiyu,3.588,116.852
+2030,April,Victoria Nile,,2190.651
+2030,Aug.,Kagera,0.285,1.328
+2030,Aug.,Lake Victoria,1.805,1.582
+2030,Aug.,Simiyu,0.208,1.582
+2030,Aug.,Victoria Nile,,350.465
+2030,Dec.,Kagera,3.107,251.784
+2030,Dec.,Lake Victoria,8.102,600.132
+2030,Dec.,Simiyu,11.082,600.132
+2030,Dec.,Victoria Nile,,3095.509
+2030,Feb.,Kagera,3.618,4.66
+2030,Feb.,Lake Victoria,1.962,5.835
+2030,Feb.,Simiyu,0.546,5.835
+2030,Feb.,Victoria Nile,,419.267
+2030,Jan.,Kagera,1.389,101.852
+2030,Jan.,Lake Victoria,9.806,290.551
+2030,Jan.,Simiyu,2.886,290.551
+2030,Jan.,Victoria Nile,,3390.944
+2030,July,Kagera,0.267,0.397
+2030,July,Lake Victoria,0.833,1.723
+2030,July,Simiyu,0.181,1.723
+2030,July,Victoria Nile,,312.532
+2030,June,Kagera,0.416,0.524
+2030,June,Lake Victoria,2.003,2.202
+2030,June,Simiyu,0.429,2.202
+2030,June,Victoria Nile,,436.503
+2030,March,Kagera,0.108,17.685
+2030,March,Lake Victoria,0.89,5.492
+2030,March,Simiyu,0.342,5.492
+2030,March,Victoria Nile,,338.872
+2030,May,Kagera,0.447,0.736
+2030,May,Lake Victoria,3.672,2.817
+2030,May,Simiyu,0.107,2.817
+2030,May,Victoria Nile,,248.054
+2030,Nov.,Kagera,0.98,12.143
+2030,Nov.,Lake Victoria,2.14,1.006
+2030,Nov.,Simiyu,0.406,1.006
+2030,Nov.,Victoria Nile,,926.166
+2030,Oct.,Kagera,3.423,4.111
+2030,Oct.,Lake Victoria,5.24,7.166
+2030,Oct.,Simiyu,7.851,7.166
+2030,Oct.,Victoria Nile,,680.388
+2030,Sept.,Kagera,2.288,398.86
+2030,Sept.,Lake Victoria,5.551,25.138
+2030,Sept.,Simiyu,0.626,25.138
+2030,Sept.,Victoria Nile,,2399.55
+2031,April,Kagera,5.974,736.549
+2031,April,Lake Victoria,9.991,152.401
+2031,April,Simiyu,4.783,152.401
+2031,April,Victoria Nile,,2565.392
+2031,Aug.,Kagera,0.42,8.124
+2031,Aug.,Lake Victoria,3.836,4.978
+2031,Aug.,Simiyu,1.83,4.978
+2031,Aug.,Victoria Nile,,975.184
+2031,Dec.,Kagera,1.038,162.862
+2031,Dec.,Lake Victoria,2.409,11.88
+2031,Dec.,Simiyu,2.986,11.88
+2031,Dec.,Victoria Nile,,808.066
+2031,Feb.,Kagera,0.456,0.489
+2031,Feb.,Lake Victoria,0.287,0.625
+2031,Feb.,Simiyu,1.272,0.625
+2031,Feb.,Victoria Nile,,493.024
+2031,Jan.,Kagera,0.94,133.634
+2031,Jan.,Lake Victoria,2.317,41.244
+2031,Jan.,Simiyu,1.448,41.244
+2031,Jan.,Victoria Nile,,632.586
+2031,July,Kagera,1.041,0.038
+2031,July,Lake Victoria,1.523,0.107
+2031,July,Simiyu,0.034,0.107
+2031,July,Victoria Nile,,565.61
+2031,June,Kagera,2.074,12.247
+2031,June,Lake Victoria,10.634,0.442
+2031,June,Simiyu,0.799,0.442
+2031,June,Victoria Nile,,3243.37
+2031,March,Kagera,0.881,8.185
+2031,March,Lake Victoria,0.557,0.386
+2031,March,Simiyu,0.384,0.386
+2031,March,Victoria Nile,,396.908
+2031,May,Kagera,1.784,213.843
+2031,May,Lake Victoria,6.059,248.438
+2031,May,Simiyu,2.225,248.438
+2031,May,Victoria Nile,,2060.089
+2031,Nov.,Kagera,2.729,24.869
+2031,Nov.,Lake Victoria,6.606,170.53
+2031,Nov.,Simiyu,8.4,170.53
+2031,Nov.,Victoria Nile,,2009.317
+2031,Oct.,Kagera,3.196,6.066
+2031,Oct.,Lake Victoria,9.32,0.07
+2031,Oct.,Simiyu,3.95,0.07
+2031,Oct.,Victoria Nile,,533.532
+2031,Sept.,Kagera,2.935,0.684
+2031,Sept.,Lake Victoria,7.619,0.076
+2031,Sept.,Simiyu,0.171,0.076
+2031,Sept.,Victoria Nile,,544.177
+2032,April,Kagera,16.416,2164.038
+2032,April,Lake Victoria,22.497,939.541
+2032,April,Simiyu,15.536,939.541
+2032,April,Victoria Nile,,4004.259
+2032,Aug.,Kagera,0.326,0.003
+2032,Aug.,Lake Victoria,0.438,1.114
+2032,Aug.,Simiyu,0.11,1.114
+2032,Aug.,Victoria Nile,,417.24
+2032,Dec.,Kagera,0.411,126.385
+2032,Dec.,Lake Victoria,5.383,34.499
+2032,Dec.,Simiyu,4.592,34.499
+2032,Dec.,Victoria Nile,,914.751
+2032,Feb.,Kagera,0.751,0.13
+2032,Feb.,Lake Victoria,0.929,4.31
+2032,Feb.,Simiyu,3.973,4.31
+2032,Feb.,Victoria Nile,,521.784
+2032,Jan.,Kagera,0.101,0.201
+2032,Jan.,Lake Victoria,0.276,0.861
+2032,Jan.,Simiyu,0.396,0.861
+2032,Jan.,Victoria Nile,,666.467
+2032,July,Kagera,0.642,0.003
+2032,July,Lake Victoria,1.438,1.428
+2032,July,Simiyu,0.254,1.428
+2032,July,Victoria Nile,,368.018
+2032,June,Kagera,0.187,0.004
+2032,June,Lake Victoria,0.559,1.82
+2032,June,Simiyu,0.016,1.82
+2032,June,Victoria Nile,,467.806
+2032,March,Kagera,0.843,1.473
+2032,March,Lake Victoria,0.699,2.335
+2032,March,Simiyu,0.367,2.335
+2032,March,Victoria Nile,,417.039
+2032,May,Kagera,3.614,948.19
+2032,May,Lake Victoria,10.621,1599.826
+2032,May,Simiyu,8.557,1599.826
+2032,May,Victoria Nile,,3577.95
+2032,Nov.,Kagera,9.062,8.087
+2032,Nov.,Lake Victoria,3.651,3.474
+2032,Nov.,Simiyu,10.898,3.474
+2032,Nov.,Victoria Nile,,176.401
+2032,Oct.,Kagera,8.315,29.312
+2032,Oct.,Lake Victoria,5.53,0.723
+2032,Oct.,Simiyu,4.532,0.723
+2032,Oct.,Victoria Nile,,518.477
+2032,Sept.,Kagera,0.216,0.002
+2032,Sept.,Lake Victoria,0.56,0.869
+2032,Sept.,Simiyu,0.131,0.869
+2032,Sept.,Victoria Nile,,226.536
+2033,April,Kagera,2.18,170.047
+2033,April,Lake Victoria,1.984,7.527
+2033,April,Simiyu,0.147,7.527
+2033,April,Victoria Nile,,355.787
+2033,Aug.,Kagera,1.655,0.001
+2033,Aug.,Lake Victoria,4.516,0.062
+2033,Aug.,Simiyu,0.204,0.062
+2033,Aug.,Victoria Nile,,516.624
+2033,Dec.,Kagera,0.432,30.158
+2033,Dec.,Lake Victoria,6.157,5.375
+2033,Dec.,Simiyu,4.186,5.375
+2033,Dec.,Victoria Nile,,1699.954
+2033,Feb.,Kagera,1.59,8.515
+2033,Feb.,Lake Victoria,5.544,7.496
+2033,Feb.,Simiyu,1.934,7.496
+2033,Feb.,Victoria Nile,,438.278
+2033,Jan.,Kagera,3.161,2.683
+2033,Jan.,Lake Victoria,7.544,9.687
+2033,Jan.,Simiyu,1.477,9.687
+2033,Jan.,Victoria Nile,,231.945
+2033,July,Kagera,0.042,0.006
+2033,July,Lake Victoria,1.255,0.078
+2033,July,Simiyu,0.247,0.078
+2033,July,Victoria Nile,,423.737
+2033,June,Kagera,0.129,0.0
+2033,June,Lake Victoria,2.002,0.099
+2033,June,Simiyu,0.044,0.099
+2033,June,Victoria Nile,,345.063
+2033,March,Kagera,4.383,77.676
+2033,March,Lake Victoria,9.713,62.869
+2033,March,Simiyu,3.676,62.869
+2033,March,Victoria Nile,,1083.421
+2033,May,Kagera,3.98,84.588
+2033,May,Lake Victoria,13.805,29.994
+2033,May,Simiyu,6.956,29.994
+2033,May,Victoria Nile,,4488.343
+2033,Nov.,Kagera,0.184,0.377
+2033,Nov.,Lake Victoria,0.399,2.148
+2033,Nov.,Simiyu,0.154,2.148
+2033,Nov.,Victoria Nile,,439.129
+2033,Oct.,Kagera,0.945,0.016
+2033,Oct.,Lake Victoria,3.045,0.336
+2033,Oct.,Simiyu,0.332,0.336
+2033,Oct.,Victoria Nile,,611.14
+2033,Sept.,Kagera,2.062,0.0
+2033,Sept.,Lake Victoria,13.008,0.409
+2033,Sept.,Simiyu,0.621,0.409
+2033,Sept.,Victoria Nile,,3859.64
+2034,April,Kagera,5.827,187.352
+2034,April,Lake Victoria,5.73,29.257
+2034,April,Simiyu,7.113,29.257
+2034,April,Victoria Nile,,513.318
+2034,Aug.,Kagera,1.97,78.134
+2034,Aug.,Lake Victoria,10.963,28.386
+2034,Aug.,Simiyu,1.962,28.386
+2034,Aug.,Victoria Nile,,1835.124
+2034,Dec.,Kagera,2.528,30.301
+2034,Dec.,Lake Victoria,1.182,10.607
+2034,Dec.,Simiyu,2.018,10.607
+2034,Dec.,Victoria Nile,,265.086
+2034,Feb.,Kagera,0.05,0.007
+2034,Feb.,Lake Victoria,0.265,0.23
+2034,Feb.,Simiyu,0.031,0.23
+2034,Feb.,Victoria Nile,,317.417
+2034,Jan.,Kagera,1.374,4.765
+2034,Jan.,Lake Victoria,5.975,83.105
+2034,Jan.,Simiyu,1.896,83.105
+2034,Jan.,Victoria Nile,,470.924
+2034,July,Kagera,0.124,99.025
+2034,July,Lake Victoria,1.917,26.441
+2034,July,Simiyu,0.165,26.441
+2034,July,Victoria Nile,,776.816
+2034,June,Kagera,0.204,125.914
+2034,June,Lake Victoria,2.987,33.614
+2034,June,Simiyu,0.123,33.614
+2034,June,Victoria Nile,,758.382
+2034,March,Kagera,6.015,96.365
+2034,March,Lake Victoria,15.867,179.717
+2034,March,Simiyu,1.896,179.717
+2034,March,Victoria Nile,,2530.916
+2034,May,Kagera,3.689,445.869
+2034,May,Lake Victoria,10.701,98.258
+2034,May,Simiyu,0.34,98.258
+2034,May,Victoria Nile,,3886.885
+2034,Nov.,Kagera,3.988,62.551
+2034,Nov.,Lake Victoria,5.783,15.34
+2034,Nov.,Simiyu,1.44,15.34
+2034,Nov.,Victoria Nile,,440.019
+2034,Oct.,Kagera,0.175,47.724
+2034,Oct.,Lake Victoria,0.811,16.789
+2034,Oct.,Simiyu,0.491,16.789
+2034,Oct.,Victoria Nile,,405.034
+2034,Sept.,Kagera,0.099,91.138
+2034,Sept.,Lake Victoria,3.104,26.732
+2034,Sept.,Simiyu,0.095,26.732
+2034,Sept.,Victoria Nile,,811.627
+2035,April,Kagera,4.511,97.991
+2035,April,Lake Victoria,3.096,245.87
+2035,April,Simiyu,8.154,245.87
+2035,April,Victoria Nile,,217.362
+2035,Aug.,Kagera,1.651,8.115
+2035,Aug.,Lake Victoria,2.525,1.488
+2035,Aug.,Simiyu,0.283,1.488
+2035,Aug.,Victoria Nile,,540.193
+2035,Dec.,Kagera,3.14,276.526
+2035,Dec.,Lake Victoria,11.683,969.972
+2035,Dec.,Simiyu,8.143,969.972
+2035,Dec.,Victoria Nile,,3909.812
+2035,Feb.,Kagera,0.178,17.868
+2035,Feb.,Lake Victoria,0.329,6.443
+2035,Feb.,Simiyu,0.135,6.443
+2035,Feb.,Victoria Nile,,253.952
+2035,Jan.,Kagera,0.953,23.208
+2035,Jan.,Lake Victoria,1.527,8.31
+2035,Jan.,Simiyu,1.583,8.31
+2035,Jan.,Victoria Nile,,329.651
+2035,July,Kagera,0.324,9.021
+2035,July,Lake Victoria,0.828,2.567
+2035,July,Simiyu,0.106,2.567
+2035,July,Victoria Nile,,707.286
+2035,June,Kagera,4.735,49.581
+2035,June,Lake Victoria,6.124,5.738
+2035,June,Simiyu,3.834,5.738
+2035,June,Victoria Nile,,1547.604
+2035,March,Kagera,0.602,15.969
+2035,March,Lake Victoria,1.688,5.199
+2035,March,Simiyu,0.063,5.199
+2035,March,Victoria Nile,,203.83
+2035,May,Kagera,3.186,373.739
+2035,May,Lake Victoria,1.053,32.876
+2035,May,Simiyu,0.242,32.876
+2035,May,Victoria Nile,,485.727
+2035,Nov.,Kagera,2.062,77.4
+2035,Nov.,Lake Victoria,5.243,12.265
+2035,Nov.,Simiyu,0.317,12.265
+2035,Nov.,Victoria Nile,,1747.364
+2035,Oct.,Kagera,1.377,20.556
+2035,Oct.,Lake Victoria,10.205,2.058
+2035,Oct.,Simiyu,4.016,2.058
+2035,Oct.,Victoria Nile,,3204.099
+2035,Sept.,Kagera,3.839,250.111
+2035,Sept.,Lake Victoria,3.825,183.906
+2035,Sept.,Simiyu,9.079,183.906
+2035,Sept.,Victoria Nile,,1474.566

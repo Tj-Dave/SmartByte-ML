@@ -14498,3 +14498,775 @@ Increase the number of iterations (max_iter) or scale the data as shown in:
 2025-07-08 11:26:05,195:INFO:LinearRegression(n_jobs=-1)
 2025-07-08 11:26:05,195:INFO:compare_models() successfully completed......................................
 >>>>>>> Stashed changes
+2025-07-17 01:01:14,192:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-17 01:01:14,192:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-17 01:01:14,192:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-17 01:01:14,192:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-17 01:01:14,254:INFO:Initializing load_model()
+2025-07-17 01:01:14,254:INFO:load_model(model_name=scoring_system/best_model_monsoon_intensity, platform=None, authentication=None, verbose=True)
+2025-07-17 01:01:14,272:INFO:Initializing load_model()
+2025-07-17 01:01:14,273:INFO:load_model(model_name=scoring_system/best_model_climate_change, platform=None, authentication=None, verbose=True)
+2025-07-17 01:01:14,278:INFO:Initializing load_model()
+2025-07-17 01:01:14,278:INFO:load_model(model_name=scoring_system/best_model_siltation, platform=None, authentication=None, verbose=True)
+2025-07-17 01:01:14,291:INFO:Initializing load_model()
+2025-07-17 01:01:14,291:INFO:load_model(model_name=scoring_system/best_model_agricultural_practices, platform=None, authentication=None, verbose=True)
+2025-07-17 01:01:14,303:INFO:Initializing load_model()
+2025-07-17 01:01:14,303:INFO:load_model(model_name=scoring_system/best_model_landslide_risks, platform=None, authentication=None, verbose=True)
+2025-07-17 01:01:29,664:INFO:Initializing load_model()
+2025-07-17 01:01:29,664:INFO:load_model(model_name=scoring_system/best_model_monsoon_intensity, platform=None, authentication=None, verbose=True)
+2025-07-17 01:01:29,668:INFO:Initializing load_model()
+2025-07-17 01:01:29,668:INFO:load_model(model_name=scoring_system/best_model_climate_change, platform=None, authentication=None, verbose=True)
+2025-07-17 01:01:29,674:INFO:Initializing load_model()
+2025-07-17 01:01:29,674:INFO:load_model(model_name=scoring_system/best_model_siltation, platform=None, authentication=None, verbose=True)
+2025-07-17 01:01:29,689:INFO:Initializing load_model()
+2025-07-17 01:01:29,689:INFO:load_model(model_name=scoring_system/best_model_agricultural_practices, platform=None, authentication=None, verbose=True)
+2025-07-17 01:01:29,703:INFO:Initializing load_model()
+2025-07-17 01:01:29,703:INFO:load_model(model_name=scoring_system/best_model_landslide_risks, platform=None, authentication=None, verbose=True)
+2025-07-17 01:03:14,235:INFO:Initializing load_model()
+2025-07-17 01:03:14,235:INFO:load_model(model_name=scoring_system/best_model_monsoon_intensity, platform=None, authentication=None, verbose=True)
+2025-07-17 01:03:14,239:INFO:Initializing load_model()
+2025-07-17 01:03:14,239:INFO:load_model(model_name=scoring_system/best_model_climate_change, platform=None, authentication=None, verbose=True)
+2025-07-17 01:03:14,242:INFO:Initializing load_model()
+2025-07-17 01:03:14,243:INFO:load_model(model_name=scoring_system/best_model_siltation, platform=None, authentication=None, verbose=True)
+2025-07-17 01:03:14,255:INFO:Initializing load_model()
+2025-07-17 01:03:14,255:INFO:load_model(model_name=scoring_system/best_model_agricultural_practices, platform=None, authentication=None, verbose=True)
+2025-07-17 01:03:14,266:INFO:Initializing load_model()
+2025-07-17 01:03:14,266:INFO:load_model(model_name=scoring_system/best_model_landslide_risks, platform=None, authentication=None, verbose=True)
+2025-07-17 01:03:54,170:INFO:Initializing load_model()
+2025-07-17 01:03:54,170:INFO:load_model(model_name=scoring_system/best_model_monsoon_intensity, platform=None, authentication=None, verbose=True)
+2025-07-17 01:03:54,174:INFO:Initializing load_model()
+2025-07-17 01:03:54,174:INFO:load_model(model_name=scoring_system/best_model_climate_change, platform=None, authentication=None, verbose=True)
+2025-07-17 01:03:54,177:INFO:Initializing load_model()
+2025-07-17 01:03:54,177:INFO:load_model(model_name=scoring_system/best_model_siltation, platform=None, authentication=None, verbose=True)
+2025-07-17 01:03:54,191:INFO:Initializing load_model()
+2025-07-17 01:03:54,191:INFO:load_model(model_name=scoring_system/best_model_agricultural_practices, platform=None, authentication=None, verbose=True)
+2025-07-17 01:03:54,203:INFO:Initializing load_model()
+2025-07-17 01:03:54,204:INFO:load_model(model_name=scoring_system/best_model_landslide_risks, platform=None, authentication=None, verbose=True)
+2025-07-17 01:03:54,220:INFO:Initializing predict_model()
+2025-07-17 01:03:54,220:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46cd47510>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 GradientBoostingRegressor(random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb46cfca020>)
+2025-07-17 01:03:54,220:INFO:Checking exceptions
+2025-07-17 01:03:54,220:INFO:Preloading libraries
+2025-07-17 01:03:54,220:INFO:Set up data.
+2025-07-17 01:03:54,224:INFO:Set up index.
+2025-07-17 01:10:10,005:INFO:Initializing load_model()
+2025-07-17 01:10:10,006:INFO:load_model(model_name=scoring_system/best_model_monsoon_intensity, platform=None, authentication=None, verbose=True)
+2025-07-17 01:10:10,012:INFO:Initializing load_model()
+2025-07-17 01:10:10,012:INFO:load_model(model_name=scoring_system/best_model_climate_change, platform=None, authentication=None, verbose=True)
+2025-07-17 01:10:10,019:INFO:Initializing load_model()
+2025-07-17 01:10:10,019:INFO:load_model(model_name=scoring_system/best_model_siltation, platform=None, authentication=None, verbose=True)
+2025-07-17 01:10:10,030:INFO:Initializing load_model()
+2025-07-17 01:10:10,031:INFO:load_model(model_name=scoring_system/best_model_agricultural_practices, platform=None, authentication=None, verbose=True)
+2025-07-17 01:10:10,041:INFO:Initializing load_model()
+2025-07-17 01:10:10,041:INFO:load_model(model_name=scoring_system/best_model_landslide_risks, platform=None, authentication=None, verbose=True)
+2025-07-17 01:10:10,055:INFO:Initializing predict_model()
+2025-07-17 01:10:10,055:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46d02d750>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 GradientBoostingRegressor(random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb46cfca340>)
+2025-07-17 01:10:10,055:INFO:Checking exceptions
+2025-07-17 01:10:10,055:INFO:Preloading libraries
+2025-07-17 01:10:10,055:INFO:Set up data.
+2025-07-17 01:10:10,059:INFO:Set up index.
+2025-07-17 01:12:10,303:INFO:Initializing load_model()
+2025-07-17 01:12:10,303:INFO:load_model(model_name=scoring_system/best_model_monsoon_intensity, platform=None, authentication=None, verbose=True)
+2025-07-17 01:12:10,307:INFO:Initializing load_model()
+2025-07-17 01:12:10,307:INFO:load_model(model_name=scoring_system/best_model_climate_change, platform=None, authentication=None, verbose=True)
+2025-07-17 01:12:10,310:INFO:Initializing load_model()
+2025-07-17 01:12:10,310:INFO:load_model(model_name=scoring_system/best_model_siltation, platform=None, authentication=None, verbose=True)
+2025-07-17 01:12:10,322:INFO:Initializing load_model()
+2025-07-17 01:12:10,322:INFO:load_model(model_name=scoring_system/best_model_agricultural_practices, platform=None, authentication=None, verbose=True)
+2025-07-17 01:12:10,333:INFO:Initializing load_model()
+2025-07-17 01:12:10,333:INFO:load_model(model_name=scoring_system/best_model_landslide_risks, platform=None, authentication=None, verbose=True)
+2025-07-17 01:12:10,346:INFO:Initializing predict_model()
+2025-07-17 01:12:10,346:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46ee63810>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 GradientBoostingRegressor(random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb46ef8c4a0>)
+2025-07-17 01:12:10,346:INFO:Checking exceptions
+2025-07-17 01:12:10,346:INFO:Preloading libraries
+2025-07-17 01:12:10,347:INFO:Set up data.
+2025-07-17 01:12:10,350:INFO:Set up index.
+2025-07-17 01:12:10,476:INFO:Initializing predict_model()
+2025-07-17 01:12:10,476:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46efea4d0>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 GradientBoostingRegressor(random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb47b5a9a80>)
+2025-07-17 01:12:10,476:INFO:Checking exceptions
+2025-07-17 01:12:10,476:INFO:Preloading libraries
+2025-07-17 01:12:10,476:INFO:Set up data.
+2025-07-17 01:12:10,480:INFO:Set up index.
+2025-07-17 01:12:10,616:INFO:Initializing predict_model()
+2025-07-17 01:12:10,616:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb476c4fb10>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb47b5a9a80>)
+2025-07-17 01:12:10,616:INFO:Checking exceptions
+2025-07-17 01:12:10,616:INFO:Preloading libraries
+2025-07-17 01:12:10,617:INFO:Set up data.
+2025-07-17 01:12:10,621:INFO:Set up index.
+2025-07-17 01:12:10,771:INFO:Initializing predict_model()
+2025-07-17 01:12:10,772:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb476ca89d0>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb47b5a9a80>)
+2025-07-17 01:12:10,772:INFO:Checking exceptions
+2025-07-17 01:12:10,772:INFO:Preloading libraries
+2025-07-17 01:12:10,772:INFO:Set up data.
+2025-07-17 01:12:10,775:INFO:Set up index.
+2025-07-17 01:12:10,922:INFO:Initializing predict_model()
+2025-07-17 01:12:10,922:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46efcc3d0>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb47b5a9a80>)
+2025-07-17 01:12:10,922:INFO:Checking exceptions
+2025-07-17 01:12:10,922:INFO:Preloading libraries
+2025-07-17 01:12:10,922:INFO:Set up data.
+2025-07-17 01:12:10,927:INFO:Set up index.
+2025-07-17 01:13:22,477:INFO:Initializing load_model()
+2025-07-17 01:13:22,478:INFO:load_model(model_name=scoring_system/best_model_monsoon_intensity, platform=None, authentication=None, verbose=True)
+2025-07-17 01:13:22,483:INFO:Initializing load_model()
+2025-07-17 01:13:22,484:INFO:load_model(model_name=scoring_system/best_model_climate_change, platform=None, authentication=None, verbose=True)
+2025-07-17 01:13:22,487:INFO:Initializing load_model()
+2025-07-17 01:13:22,487:INFO:load_model(model_name=scoring_system/best_model_siltation, platform=None, authentication=None, verbose=True)
+2025-07-17 01:13:22,499:INFO:Initializing load_model()
+2025-07-17 01:13:22,500:INFO:load_model(model_name=scoring_system/best_model_agricultural_practices, platform=None, authentication=None, verbose=True)
+2025-07-17 01:13:22,511:INFO:Initializing load_model()
+2025-07-17 01:13:22,512:INFO:load_model(model_name=scoring_system/best_model_landslide_risks, platform=None, authentication=None, verbose=True)
+2025-07-17 01:13:22,528:INFO:Initializing predict_model()
+2025-07-17 01:13:22,528:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46c88ed10>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 GradientBoostingRegressor(random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb46cfca2a0>)
+2025-07-17 01:13:22,528:INFO:Checking exceptions
+2025-07-17 01:13:22,528:INFO:Preloading libraries
+2025-07-17 01:13:22,528:INFO:Set up data.
+2025-07-17 01:13:22,534:INFO:Set up index.
+2025-07-17 01:13:22,665:INFO:Initializing predict_model()
+2025-07-17 01:13:22,665:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46fdb37d0>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 GradientBoostingRegressor(random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb46fc520c0>)
+2025-07-17 01:13:22,665:INFO:Checking exceptions
+2025-07-17 01:13:22,665:INFO:Preloading libraries
+2025-07-17 01:13:22,665:INFO:Set up data.
+2025-07-17 01:13:22,669:INFO:Set up index.
+2025-07-17 01:13:22,804:INFO:Initializing predict_model()
+2025-07-17 01:13:22,804:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46cfc6650>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb5102aee80>)
+2025-07-17 01:13:22,805:INFO:Checking exceptions
+2025-07-17 01:13:22,805:INFO:Preloading libraries
+2025-07-17 01:13:22,805:INFO:Set up data.
+2025-07-17 01:13:22,809:INFO:Set up index.
+2025-07-17 01:13:22,961:INFO:Initializing predict_model()
+2025-07-17 01:13:22,962:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46ef42a50>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb5102aee80>)
+2025-07-17 01:13:22,962:INFO:Checking exceptions
+2025-07-17 01:13:22,962:INFO:Preloading libraries
+2025-07-17 01:13:22,962:INFO:Set up data.
+2025-07-17 01:13:22,967:INFO:Set up index.
+2025-07-17 01:13:23,115:INFO:Initializing predict_model()
+2025-07-17 01:13:23,115:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb476f1e2d0>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb5102aee80>)
+2025-07-17 01:13:23,115:INFO:Checking exceptions
+2025-07-17 01:13:23,116:INFO:Preloading libraries
+2025-07-17 01:13:23,116:INFO:Set up data.
+2025-07-17 01:13:23,119:INFO:Set up index.
+2025-07-17 01:14:07,325:INFO:Initializing load_model()
+2025-07-17 01:14:07,325:INFO:load_model(model_name=scoring_system/best_model_monsoon_intensity, platform=None, authentication=None, verbose=True)
+2025-07-17 01:14:07,329:INFO:Initializing load_model()
+2025-07-17 01:14:07,329:INFO:load_model(model_name=scoring_system/best_model_climate_change, platform=None, authentication=None, verbose=True)
+2025-07-17 01:14:07,335:INFO:Initializing load_model()
+2025-07-17 01:14:07,335:INFO:load_model(model_name=scoring_system/best_model_siltation, platform=None, authentication=None, verbose=True)
+2025-07-17 01:14:07,350:INFO:Initializing load_model()
+2025-07-17 01:14:07,350:INFO:load_model(model_name=scoring_system/best_model_agricultural_practices, platform=None, authentication=None, verbose=True)
+2025-07-17 01:14:07,361:INFO:Initializing load_model()
+2025-07-17 01:14:07,361:INFO:load_model(model_name=scoring_system/best_model_landslide_risks, platform=None, authentication=None, verbose=True)
+2025-07-17 01:14:07,377:INFO:Initializing predict_model()
+2025-07-17 01:14:07,377:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46ffdd390>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 GradientBoostingRegressor(random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb46cfcb380>)
+2025-07-17 01:14:07,377:INFO:Checking exceptions
+2025-07-17 01:14:07,377:INFO:Preloading libraries
+2025-07-17 01:14:07,378:INFO:Set up data.
+2025-07-17 01:14:07,384:INFO:Set up index.
+2025-07-17 01:14:07,548:INFO:Initializing predict_model()
+2025-07-17 01:14:07,548:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46ef785d0>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 GradientBoostingRegressor(random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb46fc53b00>)
+2025-07-17 01:14:07,548:INFO:Checking exceptions
+2025-07-17 01:14:07,548:INFO:Preloading libraries
+2025-07-17 01:14:07,548:INFO:Set up data.
+2025-07-17 01:14:07,552:INFO:Set up index.
+2025-07-17 01:14:07,695:INFO:Initializing predict_model()
+2025-07-17 01:14:07,695:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46ef785d0>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb475276fc0>)
+2025-07-17 01:14:07,695:INFO:Checking exceptions
+2025-07-17 01:14:07,695:INFO:Preloading libraries
+2025-07-17 01:14:07,695:INFO:Set up data.
+2025-07-17 01:14:07,699:INFO:Set up index.
+2025-07-17 01:14:07,843:INFO:Initializing predict_model()
+2025-07-17 01:14:07,843:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46c9fe810>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb475276fc0>)
+2025-07-17 01:14:07,843:INFO:Checking exceptions
+2025-07-17 01:14:07,844:INFO:Preloading libraries
+2025-07-17 01:14:07,844:INFO:Set up data.
+2025-07-17 01:14:07,847:INFO:Set up index.
+2025-07-17 01:14:07,997:INFO:Initializing predict_model()
+2025-07-17 01:14:07,997:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46fd30d10>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb475276fc0>)
+2025-07-17 01:14:07,997:INFO:Checking exceptions
+2025-07-17 01:14:07,997:INFO:Preloading libraries
+2025-07-17 01:14:07,997:INFO:Set up data.
+2025-07-17 01:14:08,001:INFO:Set up index.
+2025-07-17 01:18:36,874:INFO:Initializing load_model()
+2025-07-17 01:18:36,874:INFO:load_model(model_name=scoring_system/best_model_monsoon_intensity, platform=None, authentication=None, verbose=True)
+2025-07-17 01:18:36,880:INFO:Initializing load_model()
+2025-07-17 01:18:36,880:INFO:load_model(model_name=scoring_system/best_model_climate_change, platform=None, authentication=None, verbose=True)
+2025-07-17 01:18:36,885:INFO:Initializing load_model()
+2025-07-17 01:18:36,885:INFO:load_model(model_name=scoring_system/best_model_siltation, platform=None, authentication=None, verbose=True)
+2025-07-17 01:18:36,899:INFO:Initializing load_model()
+2025-07-17 01:18:36,899:INFO:load_model(model_name=scoring_system/best_model_agricultural_practices, platform=None, authentication=None, verbose=True)
+2025-07-17 01:18:36,911:INFO:Initializing load_model()
+2025-07-17 01:18:36,911:INFO:load_model(model_name=scoring_system/best_model_landslide_risks, platform=None, authentication=None, verbose=True)
+2025-07-17 01:18:36,928:INFO:Initializing predict_model()
+2025-07-17 01:18:36,928:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46cee7ed0>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 GradientBoostingRegressor(random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb46cfc91c0>)
+2025-07-17 01:18:36,928:INFO:Checking exceptions
+2025-07-17 01:18:36,928:INFO:Preloading libraries
+2025-07-17 01:18:36,928:INFO:Set up data.
+2025-07-17 01:18:36,932:INFO:Set up index.
+2025-07-17 01:18:37,054:INFO:Initializing predict_model()
+2025-07-17 01:18:37,054:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb5102e7f10>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 GradientBoostingRegressor(random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb46cfc91c0>)
+2025-07-17 01:18:37,054:INFO:Checking exceptions
+2025-07-17 01:18:37,054:INFO:Preloading libraries
+2025-07-17 01:18:37,054:INFO:Set up data.
+2025-07-17 01:18:37,057:INFO:Set up index.
+2025-07-17 01:18:37,175:INFO:Initializing predict_model()
+2025-07-17 01:18:37,175:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb476ca8f90>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb46cfc91c0>)
+2025-07-17 01:18:37,175:INFO:Checking exceptions
+2025-07-17 01:18:37,175:INFO:Preloading libraries
+2025-07-17 01:18:37,175:INFO:Set up data.
+2025-07-17 01:18:37,180:INFO:Set up index.
+2025-07-17 01:18:37,334:INFO:Initializing predict_model()
+2025-07-17 01:18:37,334:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46c9f9c10>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb46cfc91c0>)
+2025-07-17 01:18:37,334:INFO:Checking exceptions
+2025-07-17 01:18:37,334:INFO:Preloading libraries
+2025-07-17 01:18:37,334:INFO:Set up data.
+2025-07-17 01:18:37,338:INFO:Set up index.
+2025-07-17 01:18:37,491:INFO:Initializing predict_model()
+2025-07-17 01:18:37,491:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x7fb46ffe85d0>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['geopotential_height',
+                                             'high_vegetation_cover',
+                                             'high_vegetation_type',
+                                             'lake_cover', 'land_sea_mask',
+                                             'low_vegetation_cover',
+                                             'low_vegetation_type', 'soil_type',
+                                             'target_latitude',
+                                             'target_longitude',
+                                             'grid_latitude', 'grid_longitude',
+                                             'total_precipitation', 'runoff',...
+                                             'soil_volume_water_content_level2',
+                                             'soil_volume_water_content_level3',
+                                             'soil_volume_water_content_level4',
+                                             'surface_pressure',
+                                             'temperature_2m',
+                                             'u_component_wind_10m', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('actual_estimator',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x7fb46cfc91c0>)
+2025-07-17 01:18:37,491:INFO:Checking exceptions
+2025-07-17 01:18:37,491:INFO:Preloading libraries
+2025-07-17 01:18:37,491:INFO:Set up data.
+2025-07-17 01:18:37,495:INFO:Set up index.
+2025-07-17 01:49:49,354:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-17 01:49:49,354:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-17 01:49:49,354:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-17 01:49:49,354:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-17 01:49:49,407:INFO:Initializing load_model()
+2025-07-17 01:49:49,407:INFO:load_model(model_name=scoring_system/best_model_monsoon_intensity, platform=None, authentication=None, verbose=True)
+2025-07-17 01:49:49,421:INFO:Initializing load_model()
+2025-07-17 01:49:49,421:INFO:load_model(model_name=scoring_system/best_model_climate_change, platform=None, authentication=None, verbose=True)
+2025-07-17 01:49:49,424:INFO:Initializing load_model()
+2025-07-17 01:49:49,424:INFO:load_model(model_name=scoring_system/best_model_siltation, platform=None, authentication=None, verbose=True)
+2025-07-17 01:49:49,438:INFO:Initializing load_model()
+2025-07-17 01:49:49,438:INFO:load_model(model_name=scoring_system/best_model_agricultural_practices, platform=None, authentication=None, verbose=True)
+2025-07-17 01:49:49,450:INFO:Initializing load_model()
+2025-07-17 01:49:49,451:INFO:load_model(model_name=scoring_system/best_model_landslide_risks, platform=None, authentication=None, verbose=True)
+2025-07-17 01:54:47,059:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-17 01:54:47,059:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-17 01:54:47,059:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-17 01:54:47,059:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-17 01:54:47,115:INFO:Initializing load_model()
+2025-07-17 01:54:47,115:INFO:load_model(model_name=scoring_system/best_model_monsoon_intensity, platform=None, authentication=None, verbose=True)
+2025-07-17 01:54:47,130:INFO:Initializing load_model()
+2025-07-17 01:54:47,130:INFO:load_model(model_name=scoring_system/best_model_climate_change, platform=None, authentication=None, verbose=True)
+2025-07-17 01:54:47,133:INFO:Initializing load_model()
+2025-07-17 01:54:47,133:INFO:load_model(model_name=scoring_system/best_model_siltation, platform=None, authentication=None, verbose=True)
+2025-07-17 01:54:47,146:INFO:Initializing load_model()
+2025-07-17 01:54:47,146:INFO:load_model(model_name=scoring_system/best_model_agricultural_practices, platform=None, authentication=None, verbose=True)
+2025-07-17 01:54:47,158:INFO:Initializing load_model()
+2025-07-17 01:54:47,158:INFO:load_model(model_name=scoring_system/best_model_landslide_risks, platform=None, authentication=None, verbose=True)

@@ -1,4 +1,4 @@
-City,TopographyDrainage,RiverManagement,Deforestation,Urbanization,DamsQuality,Encroachments,IneffectiveDisasterPreparedness,DrainageSystems,CoastalVulnerability,Watersheds,DeterioratingInfrastructure,PopulationScore,WetlandLoss,InadequatePlanning,PoliticalFactors
-Kampala,7,8,12,15,6,14,11,9,3,10,12,16,18,14,10
-Kabale,14,10,10,7,5,7,8,10,0,11,7,5,9,9,8
-Kasese,11,8,10,9,6,11,10,9,0,10,9,7,11,10,8
+City,TopographyDrainage,RiverManagement,Deforestation,Urbanization,DamsQuality,AgriculturalPractices,Encroachments,IneffectiveDisasterPreparedness,DrainageSystems,CoastalVulnerability,Watersheds,DeterioratingInfrastructure,PopulationScore,WetlandLoss,InadequatePlanning,PoliticalFactors
+Kampala,7,8,12,15,6,3,14,11,9,3,10,12,16,18,14,10
+Kabale,14,10,10,7,5,12,7,8,10,0,11,7,5,9,9,8
+Kasese,11,8,10,9,6,9,11,10,9,0,10,9,7,11,10,8

@@ -1,33 +1,17 @@
 # --- apiModule.py ---
 import pandas as pd
 import numpy as np
-from pycaret.regression import load_model, predict_model
 from joblib import load
 
 # Load datasets
-forecast_df = pd.read_csv("scoring_system/datasets/synthetic_all_features_incl_targets.csv")
+forecast_df = pd.read_csv("scoring_system/datasets/synthetic_downsampled_balanced.csv")
 static_df = pd.read_csv("scoring_system/datasets/static/static_features_uganda_cities_.csv")
 
-# Load models
-models = {
-    "MonsoonIntensity": load_model("scoring_system/best_model_monsoon_intensity"),
-    "ClimateChange": load_model("scoring_system/best_model_climate_change"),
-    "Siltation": load_model("scoring_system/best_model_siltation"),
-    "AgriculturalPractices": load_model("scoring_system/best_model_agricultural_practices"),
-    "Landslides": load_model("scoring_system/best_model_landslide_risks")
-}
-
 def get_prediction_dataframe(city, date):
-    city = city.capitalize()  # Standardize casing
+    city = city.capitalize()
     forecast_row = forecast_df[(forecast_df['city'] == city) & (forecast_df['date'] == date)]
     if forecast_row.empty:
         raise ValueError("No forecast data found for given city and date.")
-
-    # Predict using models (rounded int output)
-    predictions = {}
-    for name, model in models.items():
-        pred = predict_model(model, data=forecast_row)
-        predictions[name] = int(round(pred.iloc[0, -1]))
 
     static_row = static_df[static_df['City'] == city]
     if static_row.empty:
@@ -35,12 +19,24 @@ def get_prediction_dataframe(city, date):
 
     static_features = static_row.drop(columns=['City']).iloc[0].to_dict()
 
+    # Combine the 5 target columns from the forecast with static features
+    selected_columns = [
+        "monsoon_intensity", "climate_change", "siltation",
+        "agricultural_practices", "landslide_risks"
+    ]
+    dynamic_data = forecast_row[selected_columns].iloc[0].to_dict()
+
+    # Rename keys to match flood model schema
+    mapped = {
+        "MonsoonIntensity": dynamic_data.get("monsoon_intensity"),
+        "ClimateChange": dynamic_data.get("climate_change"),
+        "Siltation": dynamic_data.get("siltation"),
+        "AgriculturalPractices": dynamic_data.get("agricultural_practices"),
+        "Landslides": dynamic_data.get("landslide_risks")
+    }
+
     final_data = {
-        "MonsoonIntensity": predictions.get("MonsoonIntensity"),
-        "ClimateChange": predictions.get("ClimateChange"),
-        "Siltation": predictions.get("Siltation"),
-        "AgriculturalPractices": predictions.get("AgriculturalPractices"),
-        "Landslides": predictions.get("Landslides"),
+        **mapped,
         **static_features
     }
 
@@ -53,6 +49,8 @@ def get_prediction_dataframe(city, date):
     ]
 
     final_df = pd.DataFrame([{col: final_data.get(col, None) for col in final_columns}])
+    
+    # Scale
     scaler = load('Core_system/scaler.pkl')
     res_df = scaler.transform(final_df)
     res_df = pd.DataFrame(res_df, columns=final_columns)
@@ -82,30 +80,17 @@ def get_prediction_dataframe(city, date):
         res_df['RunoffPotential'] + res_df['FloodSpreadPotential'] - res_df['DrainageCapacity']
     )
 
+    # Predict
     flood_model = load('Core_system/flood_prediction_model.pkl')
     flood_prediction = flood_model.predict(res_df)
-    # print("Prediction shape:", flood_prediction.shape)
-    # print("Prediction content:", flood_prediction)
+    
     if flood_prediction.shape != (1, 3):
         raise ValueError(f"Expected shape (1, 3), got {flood_prediction.shape}")
     
-    # Ensure scalar values
-    FloodProbability = float(flood_prediction[0, 0])
-    FloodSizeScore = float(flood_prediction[0, 1])
-    VulnerabilityIndex = float(flood_prediction[0, 2])
-    
-    # Create result_df with unique column names
     result_df = pd.DataFrame([{
-        "FloodProbability_result": FloodProbability,
-        "FloodSizeScore_result": FloodSizeScore,
-        "VulnerabilityIndex_result": VulnerabilityIndex
+        "FloodProbability_result": float(flood_prediction[0, 0]),
+        "FloodSizeScore_result": float(flood_prediction[0, 1]),
+        "VulnerabilityIndex_result": float(flood_prediction[0, 2])
     }])
-    
-    # Concatenate with unique column names
-    final_df = pd.concat([res_df, result_df], axis=1)
-    
-    # Debug: Inspect final DataFrame
-    # print("Final DataFrame columns:", list(final_df.columns))
-    # print("Final DataFrame sample:", final_df.iloc[0][['FloodProbability_result', 'FloodSizeScore_result', 'VulnerabilityIndex_result']].to_dict())
-    
-    return final_df
+
+    return pd.concat([res_df, result_df], axis=1)

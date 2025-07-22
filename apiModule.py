@@ -1,111 +1,146 @@
-# --- apiModule.py ---
 import pandas as pd
 import numpy as np
-from pycaret.regression import load_model, predict_model
 from joblib import load
 
-# Load datasets
-forecast_df = pd.read_csv("scoring_system/datasets/synthetic_all_features_incl_targets.csv")
-static_df = pd.read_csv("scoring_system/datasets/static/static_features_uganda_cities_.csv")
+def get_flood_prediction(city, month):
+    """
+    Generate flood predictions for a specific city and month using forecasted and static features.
+    
+    Parameters:
+    - city (str): Name of the city (e.g., 'Kampala').
+    - month (str): Date in YYYY-MM-DD format (e.g., '2026-01-01').
+    
+    Returns:
+    - pd.DataFrame: Single row with date, city, original features, engineered features, and predictions.
+    """
+    # Load datasets
+    try:
+        forecast_df = pd.read_csv("scoring_system/city_timeseries_future_2025_2050_rescaled.csv")
+        static_df = pd.read_csv("scoring_system/datasets/static/static_features_uganda_cities_rescaled.csv")
+    except Exception as e:
+        raise ValueError(f"Error loading datasets: {e}")
 
-# Load models
-models = {
-    "MonsoonIntensity": load_model("scoring_system/best_model_monsoon_intensity"),
-    "ClimateChange": load_model("scoring_system/best_model_climate_change"),
-    "Siltation": load_model("scoring_system/best_model_siltation"),
-    "AgriculturalPractices": load_model("scoring_system/best_model_agricultural_practices"),
-    "Landslides": load_model("scoring_system/best_model_landslide_risks")
-}
+    # Verify columns
+    forecast_columns = ['date', 'city', 'monsoon_intensity', 'climate_change', 'siltation', 
+                        'landslide_risks']
+    missing_forecast_cols = [col for col in forecast_columns if col not in forecast_df.columns]
+    if missing_forecast_cols:
+        raise ValueError(f"Missing columns in forecast_df: {missing_forecast_cols}")
 
-def get_prediction_dataframe(city, date):
-    city = city.capitalize()  # Standardize casing
-    forecast_row = forecast_df[(forecast_df['city'] == city) & (forecast_df['date'] == date)]
+    static_columns = ['City', 'TopographyDrainage', 'RiverManagement', 'Deforestation', 'Urbanization',
+                      'DamsQuality', 'AgriculturalPractices' ,'Encroachments', 'IneffectiveDisasterPreparedness', 
+                      'DrainageSystems', 'InadequatePlanning', 'PoliticalFactors',
+                      'CoastalVulnerability', 'Watersheds', 'DeterioratingInfrastructure', 
+                      'PopulationScore', 'WetlandLoss']
+    missing_static_cols = [col for col in static_columns if col not in static_df.columns]
+    if missing_static_cols:
+        raise ValueError(f"Missing columns in static_df: {missing_static_cols}")
+
+    # Standardize city names
+    city = city.capitalize()
+    forecast_df['city'] = forecast_df['city'].str.capitalize()
+    static_df['City'] = static_df['City'].str.capitalize()
+
+    # Convert month to datetime
+    try:
+        month = pd.to_datetime(month, format='%Y-%m-%d', errors='coerce')
+        if month is pd.NaT:
+            raise ValueError("Invalid date format. Use YYYY-MM-DD (e.g., '2026-01-01').")
+    except Exception as e:
+        raise ValueError(f"Error parsing month: {e}")
+
+    # Filter forecast data for city and month
+    forecast_row = forecast_df[(forecast_df['city'] == city) & 
+                              (pd.to_datetime(forecast_df['date']) == month)]
     if forecast_row.empty:
-        raise ValueError("No forecast data found for given city and date.")
+        raise ValueError(f"No forecast data found for city '{city}' and month '{month}'.")
 
-    # Predict using models (rounded int output)
-    predictions = {}
-    for name, model in models.items():
-        pred = predict_model(model, data=forecast_row)
-        predictions[name] = int(round(pred.iloc[0, -1]))
-
+    # Filter static data for city
     static_row = static_df[static_df['City'] == city]
     if static_row.empty:
-        raise ValueError("No static data found for given city.")
+        raise ValueError(f"No static data found for city '{city}'.")
 
-    static_features = static_row.drop(columns=['City']).iloc[0].to_dict()
+    # Merge forecast and static data
+    merged_data = forecast_row.merge(static_row, left_on='city', right_on='City', how='inner')
+    if merged_data.empty:
+        raise ValueError(f"Failed to merge data for city '{city}' and month '{month}'.")
 
-    final_data = {
-        "MonsoonIntensity": predictions.get("MonsoonIntensity"),
-        "ClimateChange": predictions.get("ClimateChange"),
-        "Siltation": predictions.get("Siltation"),
-        "AgriculturalPractices": predictions.get("AgriculturalPractices"),
-        "Landslides": predictions.get("Landslides"),
-        **static_features
-    }
+    # Drop redundant City column
+    merged_data = merged_data.drop(columns=['City'])
 
+    # Define final columns for the core model
     final_columns = [
-        "MonsoonIntensity", "TopographyDrainage", "RiverManagement", "Deforestation", "Urbanization",
-        "ClimateChange", "DamsQuality", "Siltation", "AgriculturalPractices", "Encroachments",
-        "IneffectiveDisasterPreparedness", "DrainageSystems", "CoastalVulnerability", "Landslides",
-        "Watersheds", "DeterioratingInfrastructure", "PopulationScore", "WetlandLoss",
-        "InadequatePlanning", "PoliticalFactors"
+        'MonsoonIntensity', 'TopographyDrainage', 'RiverManagement', 'Deforestation', 'Urbanization', 
+        'ClimateChange', 'DamsQuality', 'Siltation', 'AgriculturalPractices', 'Encroachments', 
+        'IneffectiveDisasterPreparedness', 'DrainageSystems', 'CoastalVulnerability', 'Landslides', 
+        'Watersheds', 'DeterioratingInfrastructure', 'PopulationScore', 'InadequatePlanning', 
+        'PoliticalFactors', 'WetlandLoss'
     ]
 
-    final_df = pd.DataFrame([{col: final_data.get(col, None) for col in final_columns}])
-    scaler = load('Core_system/scaler.pkl')
-    res_df = scaler.transform(final_df)
-    res_df = pd.DataFrame(res_df, columns=final_columns)
+    # Rename forecast columns to match final_columns
+    merged_data = merged_data.rename(columns={
+        'monsoon_intensity': 'MonsoonIntensity',
+        'climate_change': 'ClimateChange',
+        'siltation': 'Siltation',
+        'landslide_risks': 'Landslides'
+    })
 
-    # Feature Engineering
-    res_df['RunoffPotential'] = (
-        res_df['MonsoonIntensity'] + res_df['Urbanization'] + res_df['Deforestation'] +
-        res_df['AgriculturalPractices'] + res_df['Siltation']
+    # Select and order columns
+    input_df = merged_data[['date', 'city'] + final_columns]
+    
+    # Check for missing values
+    missing_values = input_df[final_columns].isna().sum()
+    if missing_values.any():
+        print(f"Warning: Missing values in input_df:\n{missing_values}")
+        input_df[final_columns] = input_df[final_columns].fillna(input_df[final_columns].mean())
+
+    # Load core model
+    try:
+        scaler = load('Core_system/scaler.pkl')
+        flood_model = load('Core_system/flood_prediction_model.pkl')
+    except Exception as e:
+        raise ValueError(f"Error loading scaler or model: {e}")
+    
+    # Scale the features
+    scaled_data = scaler.transform(input_df[final_columns])
+    scaled_df = pd.DataFrame(scaled_data, columns=final_columns, index=input_df.index)
+
+    # scaled_df = input_df.copy()
+    scaled_input = scaled_df
+    #scaled_df = scaled_df.drop(columns=['date', 'city'], errors='ignore')
+    
+    # Feature engineering
+    scaled_df['RunoffPotential'] = (
+        scaled_df['MonsoonIntensity'] + scaled_df['Urbanization'] + scaled_df['Deforestation'] +
+        scaled_df['AgriculturalPractices'] + scaled_df['Siltation']
     ) / 5
 
-    res_df['DrainageCapacity'] = (
-        res_df['TopographyDrainage'] + res_df['RiverManagement'] +
-        res_df['DrainageSystems'] + res_df['DamsQuality']
+    scaled_df['DrainageCapacity'] = (
+        scaled_df['TopographyDrainage'] + scaled_df['RiverManagement'] +
+        scaled_df['DrainageSystems'] + scaled_df['DamsQuality']
     ) / 4
 
-    res_df['FloodSpreadPotential'] = (
-        res_df['WetlandLoss'] + res_df['Encroachments'] +
-        res_df['CoastalVulnerability'] + (1 - res_df['Watersheds'])
+    scaled_df['FloodSpreadPotential'] = (
+        scaled_df['WetlandLoss'] + scaled_df['Encroachments'] +
+        scaled_df['CoastalVulnerability'] + (1 - scaled_df['Watersheds'])
     ) / 4
 
-    res_df['VulnerabilityIndex'] = (
-        res_df['PopulationScore'] + res_df['InadequatePlanning'] +
-        res_df['IneffectiveDisasterPreparedness'] + res_df['PoliticalFactors']
-    ) / 4
+    # Predict with core model
+    flood_predictions = flood_model.predict(scaled_df)
 
-    res_df['FloodSizeScore'] = (
-        res_df['RunoffPotential'] + res_df['FloodSpreadPotential'] - res_df['DrainageCapacity']
-    )
+    # Check prediction output
+    if not isinstance(flood_predictions, np.ndarray) or flood_predictions.shape != (1, 3):
+        raise ValueError(f"Expected flood_predictions to be a 1x3 NumPy array, got shape {flood_predictions.shape}")
 
-    flood_model = load('Core_system/flood_prediction_model.pkl')
-    flood_prediction = flood_model.predict(res_df)
-    # print("Prediction shape:", flood_prediction.shape)
-    # print("Prediction content:", flood_prediction)
-    if flood_prediction.shape != (1, 3):
-        raise ValueError(f"Expected shape (1, 3), got {flood_prediction.shape}")
-    
-    # Ensure scalar values
-    FloodProbability = float(flood_prediction[0, 0])
-    FloodSizeScore = float(flood_prediction[0, 1])
-    VulnerabilityIndex = float(flood_prediction[0, 2])
-    
-    # Create result_df with unique column names
-    result_df = pd.DataFrame([{
-        "FloodProbability_result": FloodProbability,
-        "FloodSizeScore_result": FloodSizeScore,
-        "VulnerabilityIndex_result": VulnerabilityIndex
-    }])
-    
-    # Concatenate with unique column names
-    final_df = pd.concat([res_df, result_df], axis=1)
-    
-    # Debug: Inspect final DataFrame
-    # print("Final DataFrame columns:", list(final_df.columns))
-    # print("Final DataFrame sample:", final_df.iloc[0][['FloodProbability_result', 'FloodSizeScore_result', 'VulnerabilityIndex_result']].to_dict())
-    
-    return final_df
+    # Create output DataFrame
+    output_df = scaled_input[final_columns].copy()
+    output_df['FloodProbability'] = flood_predictions[0, 0]
+    output_df['FloodSizeScore'] = flood_predictions[0, 1]
+    output_df['VulnerabilityIndex'] = flood_predictions[0, 2]
+
+    # Add engineered features
+    output_df['RunoffPotential'] = scaled_df['RunoffPotential']
+    output_df['DrainageCapacity'] = scaled_df['DrainageCapacity']
+    output_df['FloodSpreadPotential'] = scaled_df['FloodSpreadPotential']
+
+    return output_df

@@ -2,7 +2,8 @@ from flask import Flask, render_template, request, jsonify
 import json
 from datetime import datetime
 import random
-from apiModule import get_prediction_dataframe
+from apiModule import get_flood_prediction
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -10,7 +11,7 @@ app = Flask(__name__)
 def get_prediction_data(city, date):
     """Replace this with your actual API call"""
     try:
-        df = get_prediction_dataframe(city, date)
+        df = get_flood_prediction(city, date)
         if not df.empty:
             row = df.iloc[0]
             return {

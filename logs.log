@@ -27969,3 +27969,11 @@ Increase the number of iterations (max_iter) or scale the data as shown in:
 2025-07-17 10:59:59,291:INFO:Preloading libraries
 2025-07-17 10:59:59,291:INFO:Set up data.
 2025-07-17 10:59:59,297:INFO:Set up index.
+2025-07-22 14:03:59,008:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-22 14:03:59,012:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-22 14:03:59,065:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-07-22 14:03:59,066:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.

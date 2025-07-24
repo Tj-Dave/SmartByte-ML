@@ -23,10 +23,10 @@
             "Mubuku": {"flood_weight": 0.35, "size_weight": 0.40, "vulnerability_weight": 0.45, "population": 35000},
             "Kisanga": {"flood_weight": 0.12, "size_weight": 0.15, "vulnerability_weight": 0.10, "population": 18000},
             "Basecamp": {"flood_weight": 0.10, "size_weight": 0.08, "vulnerability_weight": 0.05, "population": 12000},
-            "Floodflow": {"flood_weight": 5.0, "size_weight": 1.00, "vulnerability_weight": 0.90, "population": 42000}
+            "Floodflow": {"flood_weight": 0.95, "size_weight": 0.50, "vulnerability_weight": 0.90, "population": 42000}
         },
         "default_weights": {
-            "flood_weight": 0.90,
+            "flood_weight": 0.40,
             "size_weight": 0.20,
             "vulnerability_weight": 0.15
         }

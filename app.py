@@ -18,23 +18,24 @@ predictor = FloodPredictor(os.path.join(os.path.dirname(__file__), 'city_weights
 
 def merge_predictions_with_geometries(kml_gdf, towns_data):
     """Attach prediction data to KML geometries"""
-    # Convert towns_data to DataFrame
+
+    # Convert list of dicts to DataFrame
     predictions_df = pd.DataFrame(towns_data)
-    predictions_df['town'] = predictions_df['name']  # Create matching column
-    
+
+    # Rename 'name' to 'town' to match with KML geometry dataframe
+    if 'name' in predictions_df.columns:
+        predictions_df = predictions_df.rename(columns={'name': 'town'})
+
     # Merge with spatial data
-    merged_gdf = kml_gdf.merge(
-        predictions_df,
-        on='town',
-        how='left'
-    )
-    
+    merged_gdf = kml_gdf.merge(predictions_df, on='town', how='left')
+
     # Handle missing data
-    if merged_gdf.isnull().any().any():
-        print("Warning: Some towns lacked prediction data")
+    if merged_gdf['probability'].isnull().any():
+        print("Warning: Some towns in the KML did not have matching prediction data and will be dropped.")
         merged_gdf = merged_gdf.dropna(subset=['probability'])
-    
+
     return merged_gdf
+
 
 def _get_risk_level(probability):
     """Classify risk for visualization"""
@@ -87,14 +88,21 @@ def generate_flood_map(city, date):
     try:
         # 1. Get predictions
         city_pred = get_flood_prediction(city, date)
-        towns_data = predictor.disaggregate_predictions(city, {
-            'flood_probability': city_pred['FloodProbability'],
-            'flood_size_score': city_pred['FloodSizeScore'],
-            'vulnerability_index': city_pred['VulnerabilityIndex']
-        })
+        city_pred_dict = {
+            'flood_probability': city_pred['FloodProbability'].item(),
+            'flood_size_score': city_pred['FloodSizeScore'].item(),
+            'vulnerability_index': city_pred['VulnerabilityIndex'].item()
+        }
         
+        towns_data = predictor.disaggregate_predictions(city, city_pred_dict)
+
+        if not towns_data:
+            print("[ERROR] The predictor did not return any town-level data.")
+            return jsonify({"error": "Could not generate flood predictions for any towns."}), 500
+
         # 2. Load KML geometries
-        kml_processor = KMLProcessor()
+        kml_processor = KMLProcessor(kml_dir="kml_data")
+        print(f"KML directory being checked: {os.path.abspath(kml_processor.kml_dir)}")
         city_kmls = kml_processor.load_city_kmls(city)
         
         # 3. Merge data

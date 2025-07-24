@@ -211,6 +211,37 @@
         .risk-low { color: #2ecc71; }
         .risk-medium { color: #f1c40f; }
         .risk-high { color: #e74c3c; }
+
+        .mapboxgl-popup {
+            max-width: 250px;
+            font: 14px/1.5 'Segoe UI', sans-serif;
+        }
+
+            .mapboxgl-popup-content {
+            background-color: rgba(0, 0, 0, 0.493); /* Dark semi-transparent background */
+            color: #fff;                          /* White readable text */
+            border-radius: 8px;
+            padding: 10px 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+            .mapboxgl-popup-content h3 {
+            margin: 0 0 5px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffcc00; /* Highlight town names or titles */
+        }
+
+            .mapboxgl-popup-content p {
+            margin: 4px 0;
+            line-height: 1.4;
+        }
+
+            .mapboxgl-popup-tip {
+            border-top-color: rgba(0, 0, 0, 0.8); /* Matches popup background */
+        }
+
+
     </style>
 </head>
 <body>

@@ -1,103 +1,114 @@
 from flask import Flask, render_template, request, jsonify
 import json
+import geopandas as gpd
+from shapely.geometry import mapping, MultiPolygon
+from util.kmlprocessor import KMLProcessor
+from util.disaggregator import FloodPredictor
 from datetime import datetime
 import random
 from apiModule import get_flood_prediction
 import pandas as pd
+import os
+import traceback
 
 app = Flask(__name__)
 
-# Mock data generator (replace with your actual API call)
-def get_prediction_data(city, date):
-    """Replace this with your actual API call"""
-    try:
-        df = get_flood_prediction(city, date)
-        if not df.empty:
-            row = df.iloc[0]
-            return {
-                'city': city,
-                'date': date,
-                'flood_probability': float(row['FloodProbability_result']),
-                'flood_size_score': float(row['FloodSizeScore_result']),
-                'vulnerability_index': float(row['VulnerabilityIndex_result'])
-            }
-        else:
-            raise ValueError("No data available")
-    except Exception as e:
-        raise Exception(f"Prediction failed: {str(e)}")
+# Initialize the predictor
+predictor = FloodPredictor(os.path.join(os.path.dirname(__file__), 'city_weights.json'))
 
-def convert_size_score_to_readable(score):
-    """Convert size score to something people understand"""
-    if score <= 0.2:
-        return {"level": "Puddles", "description": "Small street flooding", "icon": "💧"}
-    elif score <= 0.4:
-        return {"level": "Neighborhood", "description": "Several blocks affected", "icon": "🌊"}
-    elif score <= 0.6:
-        return {"level": "District", "description": "Large area coverage", "icon": "🌀"}
-    elif score <= 0.8:
-        return {"level": "City-wide", "description": "Major urban flooding", "icon": "🌪️"}
-    else:
-        return {"level": "Regional", "description": "Widespread emergency", "icon": "⚠️"}
-
-def get_risk_level(probability, size_score, vulnerability):
-    """Calculate overall risk level"""
-    overall_risk = (probability * 0.4 + size_score * 0.3 + vulnerability * 0.3)
+def merge_predictions_with_geometries(kml_gdf, towns_data):
+    """Attach prediction data to KML geometries"""
+    # Convert towns_data to DataFrame
+    predictions_df = pd.DataFrame(towns_data)
+    predictions_df['town'] = predictions_df['name']  # Create matching column
     
-    if overall_risk <= 0.3:
-        return {"level": "Low", "color": "#2ecc71", "advice": "Normal precautions sufficient"}
-    elif overall_risk <= 0.6:
-        return {"level": "Moderate", "color": "#f39c12", "advice": "Stay alert, prepare emergency kit"}
-    elif overall_risk <= 0.8:
-        return {"level": "High", "color": "#e74c3c", "advice": "Avoid low-lying areas, prepare evacuation plan"}
-    else:
-        return {"level": "Critical", "color": "#c0392b", "advice": "Emergency preparations required immediately"}
+    # Merge with spatial data
+    merged_gdf = kml_gdf.merge(
+        predictions_df,
+        on='town',
+        how='left'
+    )
+    
+    # Handle missing data
+    if merged_gdf.isnull().any().any():
+        print("Warning: Some towns lacked prediction data")
+        merged_gdf = merged_gdf.dropna(subset=['probability'])
+    
+    return merged_gdf
+
+def _get_risk_level(probability):
+    """Classify risk for visualization"""
+    if probability < 0.3: return "low"
+    elif probability < 0.6: return "medium"
+    else: return "high"
+
+def generate_geojson(gdf, output_format='featurecollection'):
+    """Convert GeoDataFrame to GeoJSON with multipolygon option"""
+    if output_format == 'multipolygon':
+        # Combine all polygons into one MultiPolygon feature
+        multipolygon = MultiPolygon(gdf.geometry.tolist())
+        properties = {
+            'city': gdf.iloc[0].get('city', ''),
+            'town_count': len(gdf),
+            'combined_risk': gdf['probability'].mean()
+        }
+        
+        feature = {
+            "type": "Feature",
+            "geometry": mapping(multipolygon),
+            "properties": properties
+        }
+        
+        return {"type": "FeatureCollection", "features": [feature]}
+    
+    else:  # Default: FeatureCollection with individual features
+        features = []
+        for _, row in gdf.iterrows():
+            features.append({
+                "type": "Feature",
+                "geometry": mapping(row.geometry),
+                "properties": {
+                    "town": row['town'],
+                    "probability": row['probability'],
+                    "size_covered": row['size_covered'],
+                    "population_affected": row['population_affected'],
+                    "risk_level": _get_risk_level(row['probability'])
+                }
+            })
+        
+        return {"type": "FeatureCollection", "features": features}
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/predict', methods=['POST'])
-def predict():
-    data = request.get_json()
-    city = data.get('city')
-    date = data.get('date')
-    
+@app.route('/flood-map/<city>/<date>')
+def generate_flood_map(city, date):
     try:
-        # Get prediction data (replace with your actual API call)
-        prediction = get_prediction_data(city, date)
+        # 1. Get predictions
+        city_pred = get_flood_prediction(city, date)
+        towns_data = predictor.disaggregate_predictions(city, {
+            'flood_probability': city_pred['FloodProbability'],
+            'flood_size_score': city_pred['FloodSizeScore'],
+            'vulnerability_index': city_pred['VulnerabilityIndex']
+        })
         
-        # Convert to readable formats
-        flood_size = convert_size_score_to_readable(prediction['flood_size_score'])
-        risk_level = get_risk_level(
-            prediction['flood_probability'],
-            prediction['flood_size_score'],
-            prediction['vulnerability_index']
-        )
+        # 2. Load KML geometries
+        kml_processor = KMLProcessor()
+        city_kmls = kml_processor.load_city_kmls(city)
         
-        # Calculate impact indicators
-        people_affected = int(prediction['flood_size_score'] * prediction['vulnerability_index'] * 9500)
-        duration_hours = int(prediction['flood_probability'] * 48)  # 0-48 hours
+        # 3. Merge data
+        merged_gdf = merge_predictions_with_geometries(city_kmls, towns_data)
         
-        response = {
-            'city': city,
-            'date': date,
-            'flood_probability': round(prediction['flood_probability'] * 100, 1),
-            'flood_size': flood_size,
-            'vulnerability_index': round(prediction['vulnerability_index'] * 100, 1),
-            'risk_level': risk_level,
-            'people_affected': people_affected,
-            'duration_hours': duration_hours,
-            'raw_scores': {
-                'probability': prediction['flood_probability'],
-                'size': prediction['flood_size_score'],
-                'vulnerability': prediction['vulnerability_index']
-            }
-        }
+        # 4. Generate GeoJSON
+        geojson = generate_geojson(merged_gdf, output_format='featurecollection')
         
-        return jsonify(response)
+        return jsonify(geojson)
         
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        print(f"[ERROR] {e}")
+        traceback.print_exc()
+        return jsonify({"error": "Internal server error"}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

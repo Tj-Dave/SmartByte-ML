@@ -1,0 +1,47 @@
+{
+    "Kampala": {
+        "towns": {
+            "Kinawataka": {"flood_weight": 0.18, "size_weight": 0.15, "vulnerability_weight": 0.20, "population": 45000},
+            "Katwe": {"flood_weight": 0.22, "size_weight": 0.25, "vulnerability_weight": 0.30, "population": 68000},
+            "Nalukolongo": {"flood_weight": 0.12, "size_weight": 0.10, "vulnerability_weight": 0.15, "population": 32000},
+            "Kisenyi": {"flood_weight": 0.15, "size_weight": 0.18, "vulnerability_weight": 0.25, "population": 55000},
+            "Katanga": {"flood_weight": 0.25, "size_weight": 0.22, "vulnerability_weight": 0.35, "population": 48000},
+            "Kasubi": {"flood_weight": 0.10, "size_weight": 0.12, "vulnerability_weight": 0.10, "population": 38000},
+            "Kalerwe": {"flood_weight": 0.20, "size_weight": 0.20, "vulnerability_weight": 0.25, "population": 60000},
+            "Bwaise": {"flood_weight": 0.30, "size_weight": 0.28, "vulnerability_weight": 0.40, "population": 75000}
+        },
+        "default_weights": {
+            "flood_weight": 0.15,
+            "size_weight": 0.15,
+            "vulnerability_weight": 0.20
+        }
+    },
+    "Kasese": {
+        "towns": {
+            "Ibanda": {"flood_weight": 0.25, "size_weight": 0.30, "vulnerability_weight": 0.20, "population": 28000},
+            "Kikoga": {"flood_weight": 0.15, "size_weight": 0.18, "vulnerability_weight": 0.15, "population": 22000},
+            "Mubuku": {"flood_weight": 0.35, "size_weight": 0.40, "vulnerability_weight": 0.45, "population": 35000},
+            "Kisanga": {"flood_weight": 0.12, "size_weight": 0.15, "vulnerability_weight": 0.10, "population": 18000},
+            "Basecamp": {"flood_weight": 0.10, "size_weight": 0.08, "vulnerability_weight": 0.05, "population": 12000},
+            "Floodflow": {"flood_weight": 0.40, "size_weight": 0.45, "vulnerability_weight": 0.50, "population": 42000}
+        },
+        "default_weights": {
+            "flood_weight": 0.20,
+            "size_weight": 0.20,
+            "vulnerability_weight": 0.15
+        }
+    },
+    "Kabale": {
+        "towns": {
+            "Kaharo": {"flood_weight": 0.30, "size_weight": 0.35, "vulnerability_weight": 0.25, "population": 25000},
+            "Maziba": {"flood_weight": 0.20, "size_weight": 0.25, "vulnerability_weight": 0.20, "population": 22000},
+            "Bukora": {"flood_weight": 0.25, "size_weight": 0.30, "vulnerability_weight": 0.30, "population": 28000},
+            "Katuna": {"flood_weight": 0.35, "size_weight": 0.40, "vulnerability_weight": 0.45, "population": 32000}
+        },
+        "default_weights": {
+            "flood_weight": 0.25,
+            "size_weight": 0.25,
+            "vulnerability_weight": 0.25
+        }
+    }
+}

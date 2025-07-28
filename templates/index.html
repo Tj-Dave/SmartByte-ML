@@ -6,189 +6,346 @@
     <title>Flood Risk Predictor</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v3.13.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v3.13.0/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
         :root {
-        --bg: #ffffff;
-        --fg: #000000;
-        --top-bar-bg: #4CAF50;
-        --sidebar-bg: #f2f2f2;
-        --map-bg: #e5e5e5;
-        --modal-bg: #ffffff;
-        --modal-fg: #000000;
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.25);
+            --fg-primary: #1e293b;
+            --fg-secondary: #64748b;
+            --fg-muted: #94a3b8;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --border: rgba(148, 163, 184, 0.2);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
 
         @media (prefers-color-scheme: dark) {
-        :root {
-            --bg: #121212;
-            --fg: #ffffff;
-            --top-bar-bg: #388e3c;
-            --sidebar-bg: #1e1e1e;
-            --map-bg: #2c2c2c;
-            --modal-bg: #1e1e1e;
-            --modal-fg: #ffffff;
-        }
-        }
-
-        * {
-        box-sizing: border-box;
+            :root {
+                --bg-primary: #0f172a;
+                --bg-secondary: #1e293b;
+                --bg-glass: rgba(30, 41, 59, 0.7);
+                --fg-primary: #f1f5f9;
+                --fg-secondary: #cbd5e1;
+                --fg-muted: #64748b;
+                --border: rgba(148, 163, 184, 0.1);
+            }
         }
 
-        body {
-        margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: var(--bg);
-        color: var(--fg);
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        }
-
-        .top-bar {
-        height: 50px;
-        background-color: var(--top-bar-bg);
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 1em;
-        font-size: 20px;
-        position: relative;
-        }
-
-        .menu-dropdown {
-        position: relative;
-        }
-
-        .menu-button {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        }
-
-        .menu-content {
-        display: none;
-        position: absolute;
-        right: 0;
-        top: 50px;
-        background: var(--sidebar-bg);
-        min-width: 160px;
-        box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
-        z-index: 200;
-        }
-
-        .menu-content a {
-        display: block;
-        padding: 10px 15px;
-        text-decoration: none;
-        color: var(--fg);
-        }
-
-        .menu-content a:hover {
-        background-color: #ccc;
-        }
-
-        .main-content {
-        flex: 1;
-        display: flex;
-        flex-direction: row;
-        overflow: hidden;
-        }
-
-        .map-viewport {
-        flex: 1;
-        background-color: var(--map-bg);
-        }
-
-        .Right-bar {
-        width: 20%;
-        background-color: var(--sidebar-bg);
-        overflow-y: auto;
-        transition: transform 0.3s ease-in-out;
-        }
-
-        @media (max-width: 768px) {
-        .Right-bar {
-            position: absolute;
-            top: 50px;
-            right: 0;
-            width: 80%;
-            height: calc(100% - 50px);
-            z-index: 100;
-            transform: translateX(100%);
-        }
-
-        .Right-bar.active {
-            transform: translateX(0);
-            box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-        }
-
-        .menu-dropdown {
-            display: none;
-        }
-
-        .toggle-sidebar {
-            display: block;
-        }
-        }
-
-        .toggle-sidebar {
-        display: none;
-        background: white;
-        color: black;
-        border: none;
-        border-radius: 5px;
-        padding: 5px 10px;
-        font-size: 14px;
-        cursor: pointer;
-        }
-
-        /* Modal styles */
-        .modal {
-        display: none;
-        position: fixed;
-        top: 60px;
-        right: 20px;
-        background: var(--modal-bg);
-        color: var(--modal-fg);
-        padding: 1em;
-        box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
-        border-radius: 8px;
-        z-index: 300;
-        max-width: 300px;
-        
-        }
-
-        .modal.show {
-        display: block;
-        }
-
-        /* Light/Dark override support */
         [data-theme="dark"] {
-            --bg: #121212;
-            --fg: #ffffff;
-            --top-bar-bg: #388e3c;
-            --sidebar-bg: #1e1e1e;
-            --map-bg: #2c2c2c;
-            --modal-bg: #1e1e1e;
-            --modal-fg: #ffffff;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-glass: rgba(30, 41, 59, 0.7);
+            --fg-primary: #f1f5f9;
+            --fg-secondary: #cbd5e1;
+            --fg-muted: #64748b;
+            --border: rgba(148, 163, 184, 0.1);
         }
 
         [data-theme="light"] {
-            --bg: #ffffff;
-            --fg: #000000;
-            --top-bar-bg: #4CAF50;
-            --sidebar-bg: #f2f2f2;
-            --map-bg: #e5e5e5;
-            --modal-bg: #ffffff;
-            --modal-fg: #000000;
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.25);
+            --fg-primary: #1e293b;
+            --fg-secondary: #64748b;
+            --fg-muted: #94a3b8;
+            --border: rgba(148, 163, 184, 0.2);
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--fg-primary);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .top-bar {
+            height: 64px;
+            background: var(--gradient-primary);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .toggle-sidebar {
+            display: none;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-size: 14px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .toggle-sidebar:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .menu-dropdown {
+            position: relative;
+        }
+
+        .menu-button {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .menu-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .menu-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: calc(100% + 8px);
+            background: var(--bg-secondary);
+            min-width: 180px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-xl);
+            z-index: 200;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        .menu-content a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: var(--fg-primary);
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .menu-content a:hover {
+            background: var(--bg-glass);
+            color: var(--accent-primary);
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .map-viewport {
+            flex: 1;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .Right-bar {
+            width: 360px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            overflow-y: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+                gap: 0;
+            }
+
+            .Right-bar {
+                position: absolute;
+                top: 64px;
+                right: 0;
+                width: 80%;
+                height: calc(100% - 64px);
+                z-index: 100;
+                transform: translateX(100%);
+                background: var(--bg-primary);
+                padding: 1.5rem;
+            }
+
+            .Right-bar.active {
+                transform: translateX(0);
+                box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+            }
+
+            .menu-dropdown {
+                display: none;
+            }
+
+            .toggle-sidebar {
+                display: block;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            
+            .town-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            background: var(--gradient-primary);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--fg-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            color: var(--fg-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg-primary);
+            color: var(--fg-primary);
+            font-family: inherit;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            background: var(--bg-secondary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 0.875rem 1.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
         .loading {
-        opacity: 0.7;
-        pointer-events: none;
+            opacity: 0.7;
+            pointer-events: none;
         }
-        
+
         .alert {
             position: fixed;
             top: 20px;
@@ -197,108 +354,477 @@
             border-radius: 5px;
             z-index: 1000;
         }
-        
+
         .alert-info {
             background: #3498db;
             color: white;
         }
-        
+
         .alert-error {
             background: #e74c3c;
             color: white;
         }
-        
+
         .risk-low { color: #2ecc71; }
         .risk-medium { color: #f1c40f; }
         .risk-high { color: #e74c3c; }
 
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-xl);
+            max-width: 400px;
+            width: 90%;
+            border: 1px solid var(--border);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        .modal-header {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--fg-primary);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+
+        .radio-item:hover {
+            background: var(--bg-primary);
+        }
+
         .mapboxgl-popup {
             max-width: 250px;
-            font: 14px/1.5 'Segoe UI', sans-serif;
+            font: 14px/1.5 'Inter', sans-serif;
         }
 
-            .mapboxgl-popup-content {
-            background-color: rgba(0, 0, 0, 0.493); /* Dark semi-transparent background */
-            color: #fff;                          /* White readable text */
-            border-radius: 8px;
+        .mapboxgl-popup-content {
+            background: var(--bg-secondary);
+            color: var(--fg-primary);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(20px);
             padding: 10px 14px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
-            .mapboxgl-popup-content h3 {
-            margin: 0 0 5px;
-            font-size: 16px;
-            font-weight: bold;
-            color: #ffcc00; /* Highlight town names or titles */
+        .mapboxgl-popup-content h3 {
+            margin: 0 0 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-primary);
         }
 
-            .mapboxgl-popup-content p {
+        .mapboxgl-popup-content p {
             margin: 4px 0;
+            font-size: 0.875rem;
             line-height: 1.4;
         }
 
-            .mapboxgl-popup-tip {
-            border-top-color: rgba(0, 0, 0, 0.8); /* Matches popup background */
+        .mapboxgl-popup-tip {
+            border-top-color: var(--bg-secondary);
         }
 
+        /* Legend styles for map */
+        #legend {
+            position: absolute !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            background: var(--bg-glass) !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 12px !important;
+            padding: 1rem !important;
+            backdrop-filter: blur(20px) !important;
+            min-width: 200px !important;
+            color: var(--fg-primary) !important;
+        }
 
+        #legend h4 {
+            margin-top: 0 !important;
+            font-weight: 600 !important;
+            color: var(--fg-primary) !important;
+        }
+
+        #legend div {
+            color: var(--fg-primary) !important;
+        }
+
+        /* Analytics Dashboard Styles */
+        .analytics-section {
+            animation: slideInUp 0.5s ease forwards;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .metric-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: var(--fg-muted);
+            font-weight: 500;
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+            position: relative;
+            height: 200px;
+        }
+
+        .risk-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .legend-percentage {
+            margin-left: auto;
+            font-weight: 600;
+            color: var(--accent-primary);
+        }
+
+        .top-towns-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .town-item {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .town-item:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+            border-color: var(--accent-primary);
+        }
+
+        .town-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .town-name {
+            font-weight: 600;
+            color: var(--fg-primary);
+        }
+
+        .town-risk {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .town-risk.high { background: var(--danger); }
+        .town-risk.medium { background: var(--warning); }
+        .town-risk.low { background: var(--success); }
+
+        .town-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--fg-secondary);
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
-
     <div class="top-bar">
-        Flood Risk Predictor
-        <button class="toggle-sidebar">☰ Menu</button>
+        <div class="logo-section">
+            <i class="fas fa-water logo-icon"></i>
+            Flood Risk Predictor
+        </div>
+        <button class="toggle-sidebar">
+            <i class="fas fa-bars"></i> Menu
+        </button>
 
         <div class="menu-dropdown">
-        <button class="menu-button">☰ Menu</button>
-        <div class="menu-content">
-            <a href="#" id="theme-settings">Theme Settings</a>
-            <a href="#" id="about-link">About</a>
-        </div>
+            <button class="menu-button">
+                <i class="fas fa-bars"></i> Menu
+            </button>
+            <div class="menu-content">
+                <a href="#" id="theme-settings">
+                    <i class="fas fa-palette"></i>
+                    Theme Settings
+                </a>
+                <a href="#" id="about-link">
+                    <i class="fas fa-info-circle"></i>
+                    About
+                </a>
+            </div>
         </div>
     </div>
 
     <div class="main-content">
         <div class="map-viewport" id="map">
-        <!-- Mapbox map goes here -->
+            <!-- Mapbox map goes here -->
         </div>
         <div class="Right-bar" id="sidebar">
-            <!-- Sidebar content -->
-            <form id="search-form">
-                <select id="city-input" required>
-                    <option value="">Select City</option>
-                    <option value="Kampala">Kampala</option>
-                    <option value="Kasese">Kasese</option>
-                    <option value="Kabale">Kabale</option>
-                </select>
+            <div class="card animate-fade-in">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="card-title">Flood Prediction</div>
+                </div>
                 
-                <input type="date" id="date-input" required>
-                
-                <button type="submit">Show Flood Prediction</button>
-            </form>
+                <form id="search-form">
+                    <div class="form-group">
+                        <label class="form-label" for="city-input">
+                            <i class="fas fa-map-marker-alt"></i> Select City
+                        </label>
+                        <select id="city-input" class="form-control" required>
+                            <option value="">Choose a city...</option>
+                            <option value="Kampala">Kampala</option>
+                            <option value="Kasese">Kasese</option>
+                            <option value="Kabale">Kabale</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="date-input">
+                            <i class="fas fa-calendar"></i> Select Date
+                        </label>
+                        <input type="date" id="date-input" class="form-control" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-chart-line"></i>
+                        Show Flood Prediction
+                    </button>
+                </form>
+            </div>
+
+            <!-- Analytics Dashboard -->
+            <div id="analytics-dashboard" class="analytics-section" style="display: none;">
+                <!-- Summary Cards -->
+                <div class="card animate-fade-in">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="card-title">Risk Overview</div>
+                    </div>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value" id="total-towns">-</div>
+                            <div class="metric-label">Towns Analyzed</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" id="avg-probability">-</div>
+                            <div class="metric-label">Avg Risk Level</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" id="total-population">-</div>
+                            <div class="metric-label">People Affected</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" id="total-area">-</div>
+                            <div class="metric-label">Area at Risk (km²)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Distribution Chart -->
+                <div class="card animate-fade-in">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-pie-chart"></i>
+                        </div>
+                        <div class="card-title">Risk Distribution</div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <canvas id="risk-chart"></canvas>
+                    </div>
+                    
+                    <div class="risk-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #10b981;"></div>
+                            <span>Low Risk</span>
+                            <span class="legend-percentage" id="low-percentage">-</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #f59e0b;"></div>
+                            <span>Medium Risk</span>
+                            <span class="legend-percentage" id="medium-percentage">-</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #ef4444;"></div>
+                            <span>High Risk</span>
+                            <span class="legend-percentage" id="high-percentage">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Risk Towns -->
+                <div class="card animate-fade-in">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="card-title">Highest Risk Areas</div>
+                    </div>
+                    
+                    <div class="top-towns-list" id="top-towns-list">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     
     <!-- About Modal -->
     <div class="modal" id="about-modal">
-        <strong>About Flood Risk Predictor</strong>
-        <p>This tool helps visualize and predict potential flood risks using geospatial and environmental data.</p>
-        <p>Built with ❤️ by your team.</p>
+        <div class="modal-content">
+            <div class="modal-header">About Flood Risk Predictor</div>
+            <p>This advanced tool helps visualize and predict potential flood risks using geospatial and environmental data analysis.</p>
+            <p>Built with modern web technologies and powered by machine learning algorithms to provide accurate flood risk assessments.</p>
+        </div>
     </div>
     
     <!-- Theme Settings Modal -->
     <div class="modal" id="theme-modal">
-        <strong>Theme Settings</strong>
-        <p>Select your preferred theme:</p>
-        <div style="margin-top: 1em;">
-            <label><input type="radio" name="theme" value="light"> Light</label><br/>
-            <label><input type="radio" name="theme" value="dark"> Dark</label><br/>
-            <label><input type="radio" name="theme" value="system"> System Default</label>
+        <div class="modal-content">
+            <div class="modal-header">Theme Settings</div>
+            <p>Choose your preferred color scheme:</p>
+            <div class="radio-group">
+                <label class="radio-item">
+                    <input type="radio" name="theme" value="light">
+                    <i class="fas fa-sun"></i>
+                    Light Theme
+                </label>
+                <label class="radio-item">
+                    <input type="radio" name="theme" value="dark">
+                    <i class="fas fa-moon"></i>
+                    Dark Theme
+                </label>
+                <label class="radio-item">
+                    <input type="radio" name="theme" value="system">
+                    <i class="fas fa-desktop"></i>
+                    System Default
+                </label>
+            </div>
         </div>
     </div>
 
     <script src="{{ url_for('static', filename='main.js') }}"></script>
-    
+    <script src="{{ url_for('static', filename='ui-enhancements.js') }}"></script>
+    <script src="{{ url_for('static', filename='analytics.js') }}"></script>
 </body>
 </html>

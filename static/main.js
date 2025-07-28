@@ -113,9 +113,18 @@ document.getElementById("search-form").addEventListener("submit", function (e) {
   fetch(`/flood-map/${city}/${date}`)
     .then((res) => res.json())
     .then((data) => {
+      if (data.error) {
+        alert("Error: " + data.error);
+        return;
+      }
       renderMap(city, data);
     })
     .catch((err) => console.error("Error fetching data:", err));
+
+  // Load analytics data - Fixed syntax error
+  if (window.analyticsDashboard) {
+    window.analyticsDashboard.loadAnalytics(city, date);
+  }
 });
 
 const cityCoords = {

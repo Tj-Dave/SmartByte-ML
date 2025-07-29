@@ -29,13 +29,13 @@ themeLink.addEventListener("click", (e) => {
   themeModal.classList.toggle("show");
   menuContent.style.display = "none";
 });
-document.addEventListener("click", (e) => {
-  if (!menuButton.contains(e.target) && !menuContent.contains(e.target)) {
-    menuContent.style.display = "none";
-  }
-  if (!aboutModal.contains(e.target)) aboutModal.classList.remove("show");
-  if (!themeModal.contains(e.target)) themeModal.classList.remove("show");
-});
+// document.addEventListener("click", (e) => {
+//   if (!menuButton.contains(e.target) && !menuContent.contains(e.target)) {
+//     menuContent.style.display = "none";
+//   }
+//   if (!aboutModal.contains(e.target)) aboutModal.classList.remove("show");
+//   if (!themeModal.contains(e.target)) themeModal.classList.remove("show");
+// });
 
 // ==== THEME HANDLING ====
 function applyTheme(theme) {
@@ -284,14 +284,14 @@ const legend = document.createElement('div');
 legend.id = 'legend';
 legend.style.cssText = `
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 5%;
+  left: 5%;
   background: rgba(0, 0, 0, 0.47);
   padding: 10px;
   font-size: 12px;
   border-radius: 4px;
   box-shadow: 0 0 5px rgba(0,0,0,0.3);
-  z-index: 1;
+  z-index: 4;
 `;
 
 legend.innerHTML = `

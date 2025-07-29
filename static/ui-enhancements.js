@@ -1,5 +1,5 @@
-/Documents/flood-predictor_v1/static/ui-enhancements.js
-// UI Enhancements for modern design - keeps main.js functionality intact
+// /Documents/flood-predictor_v1/static/ui-enhancements.js
+// // UI Enhancements for modern design - keeps main.js functionality intact
 
 document.addEventListener('DOMContentLoaded', function() {
     // Enhanced modal functionality for the new design

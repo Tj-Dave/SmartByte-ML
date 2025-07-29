@@ -94,6 +94,7 @@
             position: relative;
             box-shadow: var(--shadow-lg);
             backdrop-filter: blur(10px);
+            z-index: 500;
         }
 
         .logo-section {
@@ -155,7 +156,7 @@
             min-width: 180px;
             border-radius: 12px;
             box-shadow: var(--shadow-xl);
-            z-index: 200;
+            z-index: 600;
             border: 1px solid var(--border);
             overflow: hidden;
             backdrop-filter: blur(20px);
@@ -208,6 +209,11 @@
             .main-content {
                 padding: 1rem;
                 gap: 0;
+            }
+            
+            #legend {
+                left: 10% !important;
+                bottom: 3% !important;
             }
 
             .Right-bar {
@@ -462,8 +468,8 @@
         /* Legend styles for map */
         #legend {
             position: absolute !important;
-            bottom: 20px !important;
-            left: 20px !important;
+            bottom: 5.2% !important;
+            left: 2% !important;
             background: var(--bg-glass) !important;
             border: 1px solid var(--border) !important;
             border-radius: 12px !important;

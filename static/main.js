@@ -89,7 +89,7 @@ function updateMapStyle(theme) {
   if (!map) return;
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const isDark = theme === "dark" || (!theme && prefersDark);
-  const newStyle = isDark ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/streets-v11';
+  const newStyle = isDark ? 'mapbox://styles/creativedomain/cmdglljq3000601s8c7nwe9tp' : 'mapbox://styles/creativedomain/cmdhi8yrn002501s81c58dkj8';
   map.setStyle(newStyle);
 }
 
@@ -234,10 +234,9 @@ function getPolygonCenter(coords) {
 // ==== MAP COLOR SCALE & LEGEND ====
 
 function getProbabilityColor(prob) {
-  if (prob <= 0.2) return '#0000FF';
-  if (prob <= 0.4) return '#00FFFF';
-  if (prob <= 0.6) return '#FFFF00';
-  if (prob <= 0.8) return '#FFA500';
+  if (prob <= 0.4) return '#009dffff';
+  if (prob <= 0.6) return '#0dff00ff';
+  if (prob <= 0.8) return '#ffd500ff';
   return '#FF0000';
 }
 
@@ -257,13 +256,12 @@ map.on('style.load', () => {
           'interpolate',
           ['linear'],
           ['get', 'probability'],
-          0.05, '#0000FF',
-          0.2, '#00FFFF',
-          0.4, '#FFFF00',
-          0.6, '#FFA500',
+          0.2, '#009dffff',
+          0.4, '#0dff00ff',
+          0.6, '#ffd500ff',
           0.8, '#FF0000'
         ],
-        'fill-opacity': 0.6
+        'fill-opacity': 0.8
       }
     });
 
@@ -296,10 +294,9 @@ legend.style.cssText = `
 
 legend.innerHTML = `
   <h4 style="margin-top:0">Flood Probability</h4>
-  <div style="display:flex;align-items:center"><div style="width:20px;height:10px;background:#0000FF;margin-right:6px"></div>Low (≤ 0.2)</div>
-  <div style="display:flex;align-items:center"><div style="width:20px;height:10px;background:#00FFFF;margin-right:6px"></div>Moderate (≤ 0.4)</div>
-  <div style="display:flex;align-items:center"><div style="width:20px;height:10px;background:#FFFF00;margin-right:6px"></div>Elevated (≤ 0.6)</div>
-  <div style="display:flex;align-items:center"><div style="width:20px;height:10px;background:#FFA500;margin-right:6px"></div>High (≤ 0.8)</div>
+  <div style="display:flex;align-items:center"><div style="width:20px;height:10px;background:#009dffff;margin-right:6px"></div>Low Probability (≤ 0.4)</div>
+  <div style="display:flex;align-items:center"><div style="width:20px;height:10px;background:#0dff00ff;margin-right:6px"></div>Moderate Probability (≤ 0.6)</div>
+  <div style="display:flex;align-items:center"><div style="width:20px;height:10px;background:#ffd500ff;margin-right:6px"></div>High Probability (≤ 0.8)</div>
   <div style="display:flex;align-items:center"><div style="width:20px;height:10px;background:#FF0000;margin-right:6px"></div>Critical (> 0.8)</div>
 `;
 

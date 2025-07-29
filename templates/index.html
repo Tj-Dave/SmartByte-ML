@@ -203,6 +203,11 @@
             gap: 1.5rem;
             overflow-y: auto;
             transition: transform 0.3s ease-in-out;
+            overflow:auto;
+            scrollbar-width: none;
+        }
+        .Right-bar::-webkit-scrollbar {
+            display: none;
         }
 
         @media (max-width: 768px) {
@@ -252,6 +257,7 @@
         }
 
         .card {
+            margin: 5px;
             background: var(--bg-secondary);
             border-radius: 16px;
             padding: 1.5rem;
@@ -502,6 +508,7 @@
         }
 
         .metric-card {
+            margin: 5px;
             background: var(--bg-glass);
             border: 1px solid var(--border);
             border-radius: 10px;

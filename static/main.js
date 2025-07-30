@@ -82,6 +82,36 @@ function initMap() {
     bearing: 25,
     zoom: 7.95
   });
+  map.on('load', () => {
+    const cityCoords = {
+      Kampala: [32.5816, 0.3152],
+      Kasese: [30.08572, 0.17236],
+      Kabale: [29.989889, -1.256889],
+    };
+
+    window.cityMarkers = [];
+
+    for (const city in cityCoords) {
+      const popup = new mapboxgl.Popup({ offset: 25 }).setText(`${city}`);
+
+      const marker = new mapboxgl.Marker({ color: "red" })
+        .setLngLat(cityCoords[city])
+        .setPopup(popup)
+        .addTo(map);
+
+      marker.getElement().addEventListener('dblclick', (e) => {
+        e.stopPropagation(); // Prevent map's default dblclick behavior
+        map.flyTo({
+          center: cityCoords[city],
+          zoom: 12,
+          speed: 0.9,
+          curve: 0.42,
+        });
+      });
+      
+      window.cityMarkers.push(marker);
+    };
+  });
 }
 initMap();
 
@@ -109,6 +139,9 @@ document.getElementById("search-form").addEventListener("submit", function (e) {
     alert("Please select a date before January 2051.");
     return;
   }
+  window.cityMarkers.forEach(m => m.remove());
+
+  clearMapVisualizations();
 
   fetch(`/flood-map/${city}/${date}`)
     .then((res) => res.json())
@@ -134,6 +167,21 @@ const cityCoords = {
 };
 const cityBearing = { Kampala: 20, Kasese: -40, Kabale: 0 };
 const cityPitch = { Kampala: 65, Kasese: 80, Kabale: 75 };
+
+// ==== VISUALIZATION RESET ====
+function clearMapVisualizations() {
+  // Remove layers and source
+  if (map.getLayer('flood-fill')) map.removeLayer('flood-fill');
+  if (map.getLayer('flood-outline')) map.removeLayer('flood-outline');
+  if (map.getSource('flood-geojson')) map.removeSource('flood-geojson');
+
+  // Remove previous markers
+  if (window.townMarkers) {
+    window.townMarkers.forEach((marker) => marker.remove());
+    window.townMarkers = [];
+  }
+}
+
 
 function renderMap(city, geojson) {
   if (!map) return;
@@ -216,9 +264,9 @@ function renderMap(city, geojson) {
   });
 
   // Optionally still add center markers (can remove if not needed)
-  geojson.features.forEach((feature) => {
+  window.townMarkers = geojson.features.map((feature) => {
     const coords = getPolygonCenter(feature.geometry.coordinates[0]);
-    new mapboxgl.Marker({ color: "blue" }).setLngLat(coords).addTo(map);
+    return new mapboxgl.Marker({ color: "blue" }).setLngLat(coords).addTo(map);
   });
 }
 
@@ -234,8 +282,8 @@ function getPolygonCenter(coords) {
 // ==== MAP COLOR SCALE & LEGEND ====
 
 function getProbabilityColor(prob) {
-  if (prob <= 0.4) return '#009dffff';
-  if (prob <= 0.6) return '#0dff00ff';
+  if (prob <= 0.45) return '#009dffff';
+  if (prob <= 0.62) return '#0dff00ff';
   if (prob <= 0.8) return '#ffd500ff';
   return '#FF0000';
 }
@@ -256,9 +304,9 @@ map.on('style.load', () => {
           'interpolate',
           ['linear'],
           ['get', 'probability'],
-          0.2, '#009dffff',
-          0.4, '#0dff00ff',
-          0.6, '#ffd500ff',
+          0.0, '#009dffff',
+          0.45, '#0dff00ff',
+          0.62, '#ffd500ff',
           0.8, '#FF0000'
         ],
         'fill-opacity': 0.8
